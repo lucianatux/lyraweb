@@ -6,7 +6,8 @@
 }
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  font-size: 14px;
+  background-color: #eee;
 }
 a {
   text-decoration: none;
@@ -15,10 +16,9 @@ a {
   position: fixed;
   top: 0;
   left: 0;
-  width: 200px;
+  width: 180px;
   height: 100%;
   background-color: #198c90;
-  /*background-image: linear-gradient(to right, #008066, #004d80, #008066);*/
   color: white;
   padding-top: 20px;
   box-shadow: 5px 5px 5px #222;
@@ -38,36 +38,40 @@ a {
 }
 
 #menu div:hover {
-    text-shadow: 1px 1px 5px #000;
-    font-weight: 600;
+  text-shadow: 1px 1px 5px #000;
+  background-color: #125e60;
 }
 
 #content {
-  margin-left: 200px;
+  margin-left: 180px;
 }
 #home {
-    margin: 0 auto;
-    max-width: 800px;
-    height: 80vh;
-    padding: 20px;
-    text-align: center;
-    color: #131313;
-    display: flex;
+  margin: 0 auto;
+  max-width: 800px;
+  height: 80vh;
+  padding: 20px;
+  text-align: center;
+  color: #131313;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 40px 0;
 }
-#universe-gif{
-    width: 550px;
-    height: 200px;
-    aspect-ratio: 25 / 9; 
-  overflow: hidden; 
+.rubro-icon {
+  width: 30px;
+  filter: invert();
+}
+.rubro-icon-color{
+    width: 30px;
+}
+.rubro-title{
+    display: block;
 }
 
 footer {
-    height: 200px;
+  height: 200px;
   text-align: center;
   padding: 20px;
-  background-color: #423d4c;
+  background-color: #3d444c;
 }

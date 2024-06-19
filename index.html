@@ -18,7 +18,13 @@
     <title>Lyra Web</title>
   </head>
   <body>
+    <!----------------------MENU---------------------->
+
     <div id="menu">
+      <div class="item-menu">
+        <img class="rubro-icon" src="./assets/house.png" alt="" />
+        <p class="rubro-title">Inicio</p>
+      </div>
       <div class="item-menu">
         <img class="rubro-icon-color" src="./assets/promo.png" alt="" />
         <p class="rubro-title">Promociones</p>
@@ -50,18 +56,21 @@
       </div>
       <div class="item-menu">
         <img class="rubro-icon-color" src="./assets/whatsapp.png" alt="" />
-        <p>Contáctanos</p>
+        <p>Chat de whatsapp</p>
       </div>
     </div>
+
     <div id="content">
+      <!----------------------HOME---------------------->
+
       <div id="home">
-        <p>
-            <span>LYRA </span>
-            Distribuidora
-          </p>
-        
-        <img class="logo-icon" src="lyra1.png" alt="" id="logo" />
-        <p>Un universo de productos para tu negocio</p>
+        <p class="distribuidora text-light">
+          <img class="logo" src="lyra1.png" alt="" id="logo" />
+          <span class="lyra">LYRA </span>
+          Distribuidora
+        </p>
+        <img class="collage" src="./assets/col1.png" alt="">
+        <p class="slogan">Un universo de productos para tu negocio</p>
         <p>Conectando las posibilidades en nuestra ciudad</p>
         <p>
           Te ahorramos tiempo y esfuerzo con nuestro servicio de envío a
@@ -69,18 +78,97 @@
         </p>
       </div>
 
-      <div id="contact-form"></div>
-      <footer>
-        <div class="row justify-content-center align-items-center">
-          <div class="col-3">
-            <img class="logo" src="lyra2.png" alt="" />
-            <p>
-                <span>LYRA </span>
-                Distribuidora
-              </p>
+      <!----------------------FORM---------------------->
+
+      <section class="pt-5" id="form-section">
+        <div
+          class="container border-primary p-3 mb-3"
+          style="max-width: 500px"
+          id="contenedor-formulario"
+        >
+          <div class="text-center mb-4" id="titulo-formulario">
+            <h2>
+              Contáctanos
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/3980/3980807.png"
+                alt=""
+                class="icono-contacto"
+              />
+            </h2>
+            <p>Estamos aquí para hacer realidad tus proyectos</p>
           </div>
 
-          <div class="col-9">
+          <form
+            id="formulario-contacto"
+            action="https://formspree.io/f/xeqbkoww"
+            method="post"
+          >
+            <div class="mb-3">
+              <label for="email">Email (opcional)</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="correo@ejemplo.com"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="name">Nombre</label>
+              <input
+                type="input"
+                class="form-control"
+                id="name"
+                name="name"
+                placeholder="Nombre Apellido"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="phone">Teléfono</label>
+              <input
+                type="tel"
+                class="form-control"
+                name="phone"
+                id="phone"
+                placeholder="549 351"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <textarea
+                class="form-control"
+                name="message"
+                id="message"
+                rows="4"
+                placeholder="Escribe aquí los productos que te interesan"
+              ></textarea>
+            </div>
+
+            <div class="mb-3">
+              <button type="submit" class="btn special-color w-100 fs-5">
+                Enviar Mensaje
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!----------------------FOOTER---------------------->
+
+      <footer>
+        <div class="footer-div">
+          <div>
+            <img class="logo" src="lyra1.png" alt="" />
+            <p class="fs-5 m-2">
+              <span>LYRA </span>
+              Distribuidora
+            </p>
+          </div>
+          <div>
             <p>Gracias por visitarnos!</p>
             <p>Tel: +549 3512309375</p>
             <p>Córdoba Capital, Argentina</p>

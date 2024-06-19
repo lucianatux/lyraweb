@@ -95,8 +95,16 @@ padding: 20px;
   font-size: 25px;
   font-weight: 600;
 }
+.div-collage{
+  display: flex;
+
+}
 .collage{
   width: 50%;
+}
+.mirror{
+  width: 50%;
+  transform: scaleX(-1);
 }
 
 

@@ -122,10 +122,10 @@ padding: 20px;
   display: flex;
 filter: opacity(50%);
 }
-.collage{
+.collage, .collage2{
   width: 25%;
 }
-.mirror{
+.mirror, .mirror2{
   width: 25%;
   transform: scaleX(-1);
 }
@@ -259,6 +259,7 @@ footer p {
 
 
 @media (max-width: 576px) {
+ 
   
 }
 
@@ -283,5 +284,12 @@ footer p {
     width: 40px;
     margin: 10px;
   }
+  .collage, .mirror{
+    width: 50%;
+  }
+  .collage2, .mirror2{
+    display: none;
+  }
+
 }
 

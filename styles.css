@@ -1,6 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Aclonica&display=swap");
 
+/************ Colors ************/
+
+:root {
+  --first-color: #fefefe;
+  --second-color: #131313;
+  --third-color: #198c90;
+  --fourth-color: #125e60;
+  --fifth-color: #3d444c;
+  --sixth-color:  #E6736F;
+  
+}
+
+/************ Default Css ************/
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +23,7 @@
 body {
   font-family: Arial, sans-serif;
   font-size: 14px;
-  background-color: #fff;
+  background-color: var(--first-color);
 }
 a {
   text-decoration: none;
@@ -30,10 +43,11 @@ a {
   left: 0;
   width: 180px;
   height: 100%;
-  background-color: #198c90;
-  color: white;
+  background-color: var(--third-color);
+  color: var(--first-color);
+  font-size: 14px;
   padding-top: 20px;
-  box-shadow: 5px 5px 5px #222;
+  box-shadow: 5px 5px 5px var(--second-color);
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -50,16 +64,17 @@ a {
 }
 
 .item-menu:hover {
-  text-shadow: 1px 1px 5px #000;
-  background-color: #125e60;
+  text-shadow: 1px 1px 5px var(--second-color);
+  background-color: var(--fourth-color);
+  font-size: 16px;
 }
 
 .rubro-icon {
-  width: 27px;
-  filter: invert();
+  width: 30px;
 }
 .rubro-icon-color {
   width: 30px;
+  filter: drop-shadow(0px 0px 8px var(--second-color));
 }
 .rubro-title {
   display: block;
@@ -71,7 +86,7 @@ a {
 #home {
   margin: 0;
   text-align: center;
-  color: #131313;
+  color: var(--second-color);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,7 +100,7 @@ font-size: 35px;
 }
 .distribuidora{
 font-size: 25px;
-background:  #3d444c;
+background:  var(--fifth-color);
 width: 100%;
 padding: 20px;
 }
@@ -116,8 +131,9 @@ filter: opacity(50%);
 .delivery{
   max-width: 400px;
   width: 100%;
-  background-color: #3d444c;
-  color: #fff;
+  background-color: var(--fifth-color);
+  border-radius: 5px;
+  color: var(--first-color);
   font-weight: 600;
   display: flex;
   flex-direction: column;
@@ -133,15 +149,64 @@ filter: opacity(50%);
   cursor: pointer;
 }
 
+/*****************SEARCH*****************/
 
-/*****************FOOTER*****************/
+
+#search-container {
+  margin: 20px;
+}
+
+#search-input {
+  padding: 10px;
+  font-size: 16px;
+}
+
+#search-button {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.content-item {
+  margin: 20px 0;
+  font-size: 18px;
+}
+/*****************CAROUSEL*****************/
+.slides{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img-and-text img{
+  max-width: 340px !important;
+  padding: 0 20px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); /* Cambia el color de fondo de las flechas */
+  border-radius: 50%; /* Hace que las flechas sean redondas */
+  width: 50px;
+  height: 50px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%; /* Aumenta el área de clic de las flechas */
+}
+
+
+
+
+/*****************FORM*****************/
 #contenedor-formulario {
   background: var(--first-color);
   border-radius: 5px;
-  border: 5px solid var(--second-color);
+  border: 3px solid var(--third-color);
+  padding: 10px;
 }
 #titulo-formulario {
-  color: #3f3f3f;
+  color: var(--fifth-color);
 }
 .icono-contacto {
   width: 80px;
@@ -150,17 +215,23 @@ filter: opacity(50%);
 label{
   color: var(--second-color);
 }
+#send-button{
+  background-color: var(--sixth-color);
+}
+#send-button:hover{
+  box-shadow: 0px 0px 10px var(--second-color);
+}
 
 /*****************FOOTER*****************/
 
 footer {
   text-align: center;
   padding: 40px;
-  background-color: #3d444c;
+  background-color: var(--fifth-color);
   min-height: 200px;
 }
 footer p {
-  color: #eee;
+  color: var(--first-color);
 }
 .footer-div{
   display: flex;
@@ -174,9 +245,17 @@ footer p {
 #iconos i {
   font-size: 26px;
   padding: 0 8px;
-  color: #198c90;
+  color: var(--third-color);
 }
 #iconos i:hover {
     filter: invert();
   }
 
+  /*****************RESPONSIVE*****************/
+
+
+@media (min-width: 576px) {
+}
+
+@media (min-width: 768px) {
+}

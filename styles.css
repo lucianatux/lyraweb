@@ -66,7 +66,6 @@ a {
 /*****************HOME*****************/
 #home {
   margin: 0;
-  height: 80vh;
   text-align: center;
   color: #131313;
   display: flex;
@@ -94,10 +93,11 @@ padding: 20px;
 .slogan{
   font-size: 25px;
   font-weight: 600;
+  padding: 50px;
 }
 .div-collage{
   display: flex;
-
+filter: opacity(50%);
 }
 .collage{
   width: 50%;
@@ -105,6 +105,22 @@ padding: 20px;
 .mirror{
   width: 50%;
   transform: scaleX(-1);
+}
+.car{
+  width: 80px;
+}
+.delivery{
+  width: 100%;
+  background-color: #E6736F;
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.invert{
+  filter: invert();
 }
 
 

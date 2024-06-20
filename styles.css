@@ -270,6 +270,9 @@ footer p {
 }
 
 @media (max-width: 768px) {
+  #content{
+    margin-left: 60px;
+  }
   #menu{
     width: 60px;
     font-size: 12px;

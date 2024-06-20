@@ -75,15 +75,8 @@ a {
 
 .rubro-icon {
   width: 30px;
-  display: none;
 }
-.rubro-icon[title]{
-  font-size: 16px;
-}
-.rubro-icon-big{
-  display: block;
-  width:30px;
-}
+
 .whats {
   filter: drop-shadow(0px 0px 8px var(--second-color));
 }
@@ -280,11 +273,15 @@ footer p {
   .rubro-title{
     display: none;
   }
-  .rubro-icon{
-    display: block;
+  .lyra{
+    font-size: 22px;
   }
-  .rubro-icon-big{
-    display: none;
+  .distribuidora{
+    font-size: 16px;
+  }
+  .logo{
+    width: 40px;
+    margin: 10px;
   }
 }
 

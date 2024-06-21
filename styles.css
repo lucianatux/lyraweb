@@ -212,6 +212,10 @@ form {
   max-width: 340px;
   padding: 0 20px;
 }
+.img-and-text p{
+  height: 200px;
+  padding: 20px;
+}
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {

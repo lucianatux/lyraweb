@@ -63,11 +63,13 @@
       <!----------------------HOME---------------------->
 
       <section class="menu-section" id="home">
-        <p class="distribuidora text-light">
+        <div class="div-lyra text-light">
           <img class="logo" src="lyra1.png" alt="" id="logo" />
-          <span class="lyra">LYRA </span>
-          Distribuidora mayorista
-        </p>
+          <div id="lyramayorista">
+            <span class="lyra">LYRA </span>
+            <p id="mayorista">Distribuidora mayorista</p>
+          </div>
+        </div>
         <div class="div-collage">
           <img class="collage" src="./assets/col3.png" alt="" />
           <img class="mirror" src="./assets/col3.png" alt="" />
@@ -76,6 +78,19 @@
         </div>
 
         <p class="slogan">Un universo de productos para tu negocio</p>
+        <div class="container-rubros">
+          <div class="div-rubros">
+            <div class="icon-text" id="first">
+              <span class="icon">🌟</span>
+              <span class="text">Primer Texto</span>
+            </div>
+            <div class="icon-text" id="second">
+              <span class="icon">🚀</span>
+              <span class="text">Segundo Texto</span>
+            </div>
+          </div>
+        </div>
+
         <div id="search-container">
           <input type="text" id="search-input" placeholder="Buscar..." />
           <button id="search-button">Buscar</button>
@@ -100,67 +115,135 @@
             <div class="text-center mb-4" id="titulo-formulario">
               <h2>
                 Contáctanos
-                <img src="./assets/hand.png" alt="" class="icono-contacto" />
+                <img
+                  src="./assets/contactus2.png"
+                  alt=""
+                  class="icono-contacto"
+                />
               </h2>
               <p>Estamos aquí para hacer realidad tus proyectos</p>
             </div>
 
-            <form id="formulario-contacto" action="https://formspree.io/f/xeqbkoww" method="post">
+            <form
+              id="formulario-contacto"
+              action="https://formspree.io/f/xeqbkoww"
+              method="post"
+            >
               <div class="mb-3">
                 <label for="name">Nombre</label>
-                <input type="input" class="form-control" id="name" name="name" placeholder="Nombre" required />
+                <input
+                  type="input"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  placeholder="Nombre"
+                  required
+                />
               </div>
-            
+
               <div class="mb-3">
                 <label for="phone">Teléfono</label>
-                <input type="tel" class="form-control" name="phone" id="phone" placeholder="549 351" required />
+                <input
+                  type="tel"
+                  class="form-control"
+                  name="phone"
+                  id="phone"
+                  placeholder="549 351"
+                  required
+                />
               </div>
-              
+
               <div class="mb-3">
-                <label for="interests">Seleccione los rubros de su interés:</label>
+                <label for="interests"
+                  >Seleccione los rubros de su interés:</label
+                >
                 <div id="interests">
                   <div>
-                    <input type="checkbox" id="libreria" name="interests[]" value="Librería" />
+                    <input
+                      type="checkbox"
+                      id="libreria"
+                      name="interests[]"
+                      value="Librería"
+                    />
                     <label for="libreria">Librería</label>
                   </div>
                   <div>
-                    <input type="checkbox" id="jugueteria" name="interests[]" value="Juguetería" />
+                    <input
+                      type="checkbox"
+                      id="jugueteria"
+                      name="interests[]"
+                      value="Juguetería"
+                    />
                     <label for="jugueteria">Juguetería</label>
                   </div>
                   <div>
-                    <input type="checkbox" id="accesorios" name="interests[]" value="Accesorios para el pelo" />
+                    <input
+                      type="checkbox"
+                      id="accesorios"
+                      name="interests[]"
+                      value="Accesorios para el pelo"
+                    />
                     <label for="accesorios">Accesorios para el pelo</label>
                   </div>
                   <div>
-                    <input type="checkbox" id="tinturas" name="interests[]" value="Tinturas" />
+                    <input
+                      type="checkbox"
+                      id="tinturas"
+                      name="interests[]"
+                      value="Tinturas"
+                    />
                     <label for="tinturas">Tinturas</label>
                   </div>
                   <div>
-                    <input type="checkbox" id="carteras" name="interests[]" value="Carteras y afines" />
+                    <input
+                      type="checkbox"
+                      id="carteras"
+                      name="interests[]"
+                      value="Carteras y afines"
+                    />
                     <label for="carteras">Carteras y afines</label>
                   </div>
                   <div>
-                    <input type="checkbox" id="sublimados" name="interests[]" value="Sublimados" />
+                    <input
+                      type="checkbox"
+                      id="sublimados"
+                      name="interests[]"
+                      value="Sublimados"
+                    />
                     <label for="sublimados">Sublimados</label>
                   </div>
                   <div>
-                    <input type="checkbox" id="otros" name="interests[]" value="Otros" />
+                    <input
+                      type="checkbox"
+                      id="otros"
+                      name="interests[]"
+                      value="Otros"
+                    />
                     <label for="otros">Otros</label>
                   </div>
                 </div>
               </div>
-            
+
               <div class="mb-3">
-                <textarea class="form-control" name="message" id="message" rows="4" placeholder="Escribe aquí los productos que te interesan"></textarea>
+                <textarea
+                  class="form-control"
+                  name="message"
+                  id="message"
+                  rows="4"
+                  placeholder="Escribe aquí los productos que te interesan"
+                ></textarea>
               </div>
-            
+
               <div class="mb-3">
-                <button id="send-button" type="submit" class="btn w-100 fs-5 text-light">
+                <button
+                  id="send-button"
+                  type="submit"
+                  class="btn w-100 fs-5 text-light"
+                >
                   Enviar
                 </button>
               </div>
             </form>
-            
           </div>
         </div>
       </section>

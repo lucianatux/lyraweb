@@ -93,17 +93,27 @@ a {
   align-items: center;
   justify-content: space-between;
 }
-span {
-  font-family: "Aclonica", "Arial";
-}
-.lyra {
-  font-size: 35px;
-}
-.distribuidora {
+.div-lyra {
   font-size: 25px;
   background: var(--fifth-color);
   width: 100%;
-  padding: 20px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lyra {
+  font-size: 35px;
+  font-family: "Aclonica", "Arial";
+}
+#lyramayorista {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#mayorista {
+  margin-bottom: 0 !important;
+  padding: 10px;
 }
 .logo {
   width: 80px;
@@ -152,6 +162,62 @@ span {
   transition: transform 0.5s ease-in-out;
   cursor: pointer;
 }
+
+/*****************RUBROS EFECTOS*****************/
+
+.container-rubros {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+
+.div-rubros {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ccc;
+  background-color: white;
+}
+
+.icon-text {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+#first.moved .icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  transition: top 1s ease-in-out, left 1s ease-in-out;
+}
+
+#second.moved .icon {
+  position: absolute;
+  top: 10px;
+  left: 50px; /* Ajustar para que esté a la derecha del primer icono */
+  transition: top 1s ease-in-out, left 1s ease-in-out;
+}
+
+.hidden-text {
+  display: none;
+}
+
 
 /*****************SEARCH*****************/
 
@@ -212,7 +278,7 @@ form {
   max-width: 340px;
   padding: 0 20px;
 }
-.img-and-text p{
+.img-and-text p {
   height: 200px;
   padding: 20px;
 }
@@ -265,14 +331,20 @@ footer p {
 
 /*****************RESPONSIVE*****************/
 
-@media (max-width: 768px) and (min-width:569px) {
+@media (max-width: 768px) and (min-width: 569px) {
   .img-and-text img {
     max-width: 300px;
     padding: 0 10px;
   }
+  .lyra{
+    font-size: 28px;
+  }
+  .div-lyra {
+    font-size: 20px;
+  }
 }
 
-@media (max-width:568px){
+@media (max-width: 568px) {
   .img-and-text img {
     max-width: 200px;
     padding: 0 10px;
@@ -280,6 +352,24 @@ footer p {
   .footer-div {
     flex-direction: column;
     justify-content: center;
+  }
+  .lyra{
+    font-size: 22px;
+  }
+  .div-lyra {
+    font-size: 16px;
+    padding: 6px;
+  }
+  #lyramayorista {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #mayorista{
+    padding: 0;
+  }
+  .logo {
+    width: 50px;
+    margin: 10px;
   }
 }
 
@@ -294,16 +384,6 @@ footer p {
   }
   .rubro-title {
     display: none;
-  }
-  .lyra {
-    font-size: 22px;
-  }
-  .distribuidora {
-    font-size: 16px;
-  }
-  .logo {
-    width: 40px;
-    margin: 10px;
   }
   .collage,
   .mirror {

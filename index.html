@@ -62,7 +62,7 @@
     <div id="content">
       <!----------------------HOME---------------------->
 
-      <div id="home">
+      <section class="menu-section" id="home">
         <p class="distribuidora text-light">
           <img class="logo" src="lyra1.png" alt="" id="logo" />
           <span class="lyra">LYRA </span>
@@ -92,9 +92,83 @@
             con nuestro servicio de envío a domicilio
           </p>
         </div>
+
+          <!----------------------FORM---------------------->
+
+      <div id="form">
+        <div id="contenedor-formulario">
+          <div class="text-center mb-4" id="titulo-formulario">
+            <h2>
+              Contáctanos
+              <img src="./assets/hand.png" alt="" class="icono-contacto" />
+            </h2>
+            <p>Estamos aquí para hacer realidad tus proyectos</p>
+          </div>
+
+          <form
+            id="formulario-contacto"
+            action="https://formspree.io/f/xeqbkoww"
+            method="post"
+          >
+            <div class="mb-3">
+              <label for="name">Nombre</label>
+              <input
+                type="input"
+                class="form-control"
+                id="name"
+                name="name"
+                placeholder="Nombre Apellido"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="phone">Teléfono</label>
+              <input
+                type="tel"
+                class="form-control"
+                name="phone"
+                id="phone"
+                placeholder="549 351"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email">Email (opcional)</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="correo@ejemplo.com"
+              />
+            </div>
+
+            <div class="mb-3">
+              <textarea
+                class="form-control"
+                name="message"
+                id="message"
+                rows="4"
+                placeholder="Escribe aquí los productos que te interesan"
+              ></textarea>
+            </div>
+
+            <div class="mb-3">
+              <button
+                id="send-button"
+                type="submit"
+                class="btn w-100 fs-5 text-light"
+              >
+                Enviar
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
+      </section>
       <!----------------------PROMOS---------------------->
-      <section id="promos">
+      <section class="menu-section" id="promos">
         <hr class="m-5" />
         <h3 class="text-center m-5">
           PROMOCIONES <img class="rubro-icon" src="./assets/promo.png" alt="" />
@@ -171,79 +245,6 @@
       <!----------------------OTROS---------------------->
       <section id="otros"></section>
 
-      <!----------------------FORM---------------------->
-
-      <section id="form" class="m-5">
-        <div id="contenedor-formulario">
-          <div class="text-center mb-4" id="titulo-formulario">
-            <h2>
-              Contáctanos
-              <img src="./assets/hand.png" alt="" class="icono-contacto" />
-            </h2>
-            <p>Estamos aquí para hacer realidad tus proyectos</p>
-          </div>
-
-          <form
-            id="formulario-contacto"
-            action="https://formspree.io/f/xeqbkoww"
-            method="post"
-          >
-            <div class="mb-3">
-              <label for="name">Nombre</label>
-              <input
-                type="input"
-                class="form-control"
-                id="name"
-                name="name"
-                placeholder="Nombre Apellido"
-                required
-              />
-            </div>
-
-            <div class="mb-3">
-              <label for="phone">Teléfono</label>
-              <input
-                type="tel"
-                class="form-control"
-                name="phone"
-                id="phone"
-                placeholder="549 351"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <label for="email">Email (opcional)</label>
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                name="email"
-                placeholder="correo@ejemplo.com"
-              />
-            </div>
-
-            <div class="mb-3">
-              <textarea
-                class="form-control"
-                name="message"
-                id="message"
-                rows="4"
-                placeholder="Escribe aquí los productos que te interesan"
-              ></textarea>
-            </div>
-
-            <div class="mb-3">
-              <button
-                id="send-button"
-                type="submit"
-                class="btn w-100 fs-5 text-light"
-              >
-                Enviar
-              </button>
-            </div>
-          </form>
-        </div>
-      </section>
 
       <!----------------------FOOTER---------------------->
 

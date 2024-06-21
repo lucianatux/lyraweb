@@ -40,6 +40,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+//FORMULARIO - REINICIO DE CAMPOS
+
+document.getElementById('formulario-contacto').addEventListener('submit', function() {
+  this.reset(); // Reinicia los campos del formulario
+});
+
+
+
+
+
+
 
 
   

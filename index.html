@@ -26,7 +26,7 @@
         <p class="rubro-title">Inicio</p>
       </div>
       <div class="item-menu">
-        <img class="rubro-icon invert" src="./assets/promo.png" alt=""  />
+        <img class="rubro-icon invert" src="./assets/promo.png" alt="" />
         <p class="rubro-title">Promociones</p>
       </div>
       <div class="item-menu">
@@ -34,27 +34,27 @@
         <p class="rubro-title">Libreria y juguetes</p>
       </div>
       <div class="item-menu">
-        <img class="rubro-icon invert" src="./assets/pelo.png" alt=""  />
+        <img class="rubro-icon invert" src="./assets/pelo.png" alt="" />
         <p class="rubro-title">Accesorios para el pelo</p>
       </div>
       <div class="item-menu">
-        <img class="rubro-icon invert" src="./assets/tinturas.png" alt=""  />
+        <img class="rubro-icon invert" src="./assets/tinturas.png" alt="" />
         <p class="rubro-title">Tinturas</p>
       </div>
       <div class="item-menu">
-        <img class="rubro-icon invert" src="./assets/carteras.png" alt=""  />
+        <img class="rubro-icon invert" src="./assets/carteras.png" alt="" />
         <p class="rubro-title">Carteras y afines</p>
       </div>
       <div class="item-menu">
-        <img class="rubro-icon invert" src="./assets/sublim.png" alt=""/>
+        <img class="rubro-icon invert" src="./assets/sublim.png" alt="" />
         <p class="rubro-title">Sublimados</p>
       </div>
       <div class="item-menu">
-        <img class="rubro-icon invert" src="./assets/otros.png" alt=""  />
+        <img class="rubro-icon invert" src="./assets/otros.png" alt="" />
         <p class="rubro-title">Otros</p>
       </div>
       <div class="item-menu">
-        <img class="rubro-icon whats" src="./assets/whatsapp.png" alt=""  />
+        <img class="rubro-icon whats" src="./assets/whatsapp.png" alt="" />
         <p class="rubro-title">Chat de whatsapp</p>
       </div>
     </div>
@@ -93,79 +93,110 @@
           </p>
         </div>
 
-          <!----------------------FORM---------------------->
+        <!----------------------FORM---------------------->
 
-      <div id="form">
-        <div id="contenedor-formulario">
-          <div class="text-center mb-4" id="titulo-formulario">
-            <h2>
-              Contáctanos
-              <img src="./assets/hand.png" alt="" class="icono-contacto" />
-            </h2>
-            <p>Estamos aquí para hacer realidad tus proyectos</p>
+        <div id="form">
+          <div id="contenedor-formulario">
+            <div class="text-center mb-4" id="titulo-formulario">
+              <h2>
+                Contáctanos
+                <img src="./assets/hand.png" alt="" class="icono-contacto" />
+              </h2>
+              <p>Estamos aquí para hacer realidad tus proyectos</p>
+            </div>
+
+            <form
+              id="formulario-contacto"
+              action="https://formspree.io/f/xeqbkoww"
+              method="post"
+            >
+              <div class="mb-3">
+                <label for="name">Nombre</label>
+                <input
+                  type="input"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  placeholder="Nombre Apellido"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="phone">Teléfono</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  name="phone"
+                  id="phone"
+                  placeholder="549 351"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="email">Email (opcional)</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  placeholder="correo@ejemplo.com"
+                />
+              </div>
+              <div class="mb-3">
+                <label>Seleccione los rubros de su interés:</label>
+                <div>
+                  <input type="checkbox" id="libreria" name="interest" value="Librería" />
+                  <label for="libreria">Librería</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="jugueteria" name="interest" value="Juguetería" />
+                  <label for="jugueteria">Juguetería</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="tinturas" name="interest" value="Tinturas" />
+                  <label for="tinturas">Tinturas</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="accesorios" name="interest" value="Accesorios para el pelo" />
+                  <label for="accesorios">Accesorios para el pelo</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="carteras" name="interest" value="Carteras y afines" />
+                  <label for="carteras">Carteras y afines</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="sublimados" name="interest" value="Sublimados" />
+                  <label for="sublimados">Sublimados</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="otros" name="interest" value="Otros" />
+                  <label for="otros">Otros</label>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <textarea
+                  class="form-control"
+                  name="message"
+                  id="message"
+                  rows="4"
+                  placeholder="Escribe aquí los productos que te interesan"
+                ></textarea>
+              </div>
+
+              <div class="mb-3">
+                <button
+                  id="send-button"
+                  type="submit"
+                  class="btn w-100 fs-5 text-light"
+                >
+                  Enviar
+                </button>
+              </div>
+            </form>
           </div>
-
-          <form
-            id="formulario-contacto"
-            action="https://formspree.io/f/xeqbkoww"
-            method="post"
-          >
-            <div class="mb-3">
-              <label for="name">Nombre</label>
-              <input
-                type="input"
-                class="form-control"
-                id="name"
-                name="name"
-                placeholder="Nombre Apellido"
-                required
-              />
-            </div>
-
-            <div class="mb-3">
-              <label for="phone">Teléfono</label>
-              <input
-                type="tel"
-                class="form-control"
-                name="phone"
-                id="phone"
-                placeholder="549 351"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <label for="email">Email (opcional)</label>
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                name="email"
-                placeholder="correo@ejemplo.com"
-              />
-            </div>
-
-            <div class="mb-3">
-              <textarea
-                class="form-control"
-                name="message"
-                id="message"
-                rows="4"
-                placeholder="Escribe aquí los productos que te interesan"
-              ></textarea>
-            </div>
-
-            <div class="mb-3">
-              <button
-                id="send-button"
-                type="submit"
-                class="btn w-100 fs-5 text-light"
-              >
-                Enviar
-              </button>
-            </div>
-          </form>
         </div>
-      </div>
       </section>
       <!----------------------PROMOS---------------------->
       <section class="menu-section" id="promos">
@@ -233,18 +264,17 @@
         </div>
       </section>
       <!----------------------LIBRERÍA Y JUGUETERÍA---------------------->
-      <section id="libreria"></section>
+      <section class="menu-section" id="libreria"></section>
       <!----------------------ACCESORIOS PARA EL PELO---------------------->
-      <section id="hebillas"></section>
+      <section class="menu-section" id="hebillas"></section>
       <!----------------------TINTURAS---------------------->
-      <section id="tinturas"></section>
+      <section class="menu-section" id="tinturas"></section>
       <!----------------------CARTERAS Y AFINES---------------------->
-      <section id="carteras"></section>
+      <section class="menu-section" id="carteras"></section>
       <!----------------------SUBLIMADOS---------------------->
-      <section id="sublimados"></section>
+      <section class="menu-section" id="sublimados"></section>
       <!----------------------OTROS---------------------->
-      <section id="otros"></section>
-
+      <section class="menu-section" id="otros"></section>
 
       <!----------------------FOOTER---------------------->
 

@@ -209,7 +209,7 @@ form {
   align-items: center;
 }
 .img-and-text img {
-  max-width: 340px !important;
+  max-width: 340px;
   padding: 0 20px;
 }
 
@@ -237,7 +237,6 @@ footer {
   text-align: center;
   padding: 40px;
   background-color: var(--fifth-color);
-  min-height: 200px;
 }
 footer p {
   color: var(--first-color);
@@ -262,7 +261,22 @@ footer p {
 
 /*****************RESPONSIVE*****************/
 
-@media (max-width: 576px) {
+@media (max-width: 768px) and (min-width:569px) {
+  .img-and-text img {
+    max-width: 300px;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width:568px){
+  .img-and-text img {
+    max-width: 200px;
+    padding: 0 10px;
+  }
+  .footer-div {
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 768px) {
@@ -272,6 +286,7 @@ footer p {
   #menu {
     width: 60px;
     font-size: 12px;
+    padding-bottom: 10px;
   }
   .rubro-title {
     display: none;

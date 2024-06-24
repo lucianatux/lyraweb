@@ -95,8 +95,8 @@ a {
 }
 .div-lyra {
   font-size: 25px;
-  /*background: var(--fifth-color);*/
-  color: var(--fifth-color);
+  background: var(--fifth-color);
+  color: var(--first-color);
   width: 100%;
   padding: 10px;
   display: flex;
@@ -117,7 +117,7 @@ a {
   padding: 10px;
 }
 .logo {
-  width: 80px;
+  width: 70px;
  /* margin-right: 5px;*/
 }
 .line{

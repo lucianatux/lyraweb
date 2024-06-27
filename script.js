@@ -1,42 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 // EFECTOS RUBROS
 
-const firstElement = document.getElementById('first');
-const secondElement = document.getElementById('second');
-const firstIcon = firstElement.querySelector('.icon');
-const firstText = firstElement.querySelector('.text');
-const secondIcon = secondElement.querySelector('.icon');
-const secondText = secondElement.querySelector('.text');
-
-// Mostrar primer texto e icono
-setTimeout(() => {
-    firstElement.style.opacity = 1;
-}, 0);
-
-// Desaparecer primer texto y mover el primer icono
-setTimeout(() => {
-    firstText.classList.add('hidden-text');
-    firstElement.style.opacity = 0;
-    setTimeout(() => {
-        firstElement.style.opacity = 1;
-        firstElement.classList.add('moved');
-    }, 1000);
-}, 2000);
-
-// Mostrar segundo texto e icono
-setTimeout(() => {
-    secondElement.style.opacity = 1;
-}, 4000);
-
-// Desaparecer segundo texto y mover el segundo icono
-setTimeout(() => {
-    secondText.classList.add('hidden-text');
-    secondElement.style.opacity = 0;
-    setTimeout(() => {
-        secondElement.style.opacity = 1;
-        secondElement.classList.add('moved');
-    }, 1000);
-}, 6000);
 
 
 

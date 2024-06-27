@@ -25,7 +25,7 @@ body {
   background-color: var(--first-color);
 }
 a {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 #content {
   margin-left: 180px;
@@ -55,6 +55,7 @@ a {
 }
 
 .item-menu {
+  color: var(--first-color);
   padding: 5px;
   text-align: center;
   cursor: pointer;
@@ -81,6 +82,9 @@ a {
 .rubro-title {
   display: block;
   margin: 0 0 10px;
+}
+.rubro-title-small{
+  display: none;
 }
 
 /*****************HOME*****************/
@@ -117,8 +121,8 @@ a {
   padding: 10px;
 }
 .logo {
-  width: 70px;
- /* margin-right: 5px;*/
+  width: 80px;
+ margin-right: 5px;
 }
 .line{
   width: 100%;
@@ -169,59 +173,6 @@ a {
 }
 
 /*****************RUBROS EFECTOS*****************/
-
-.container-rubros {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f0f0f0;
-  font-family: Arial, sans-serif;
-}
-
-.div-rubros {
-  position: relative;
-  width: 300px;
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid #ccc;
-  background-color: white;
-}
-
-.icon-text {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.icon {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-#first.moved .icon {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  transition: top 1s ease-in-out, left 1s ease-in-out;
-}
-
-#second.moved .icon {
-  position: absolute;
-  top: 10px;
-  left: 50px; /* Ajustar para que esté a la derecha del primer icono */
-  transition: top 1s ease-in-out, left 1s ease-in-out;
-}
-
-.hidden-text {
-  display: none;
-}
 
 
 /*****************SEARCH*****************/
@@ -347,12 +298,22 @@ footer p {
   .div-lyra {
     font-size: 20px;
   }
+  .collage, .mirror {
+    width: 50%;
+  }
+  .collage2,
+  .mirror2 {
+    display: none;
+  }
 }
 
 @media (max-width: 568px) {
   .img-and-text img {
     max-width: 200px;
     padding: 0 10px;
+  }
+  footer{
+    padding: 10px;
   }
   .footer-div {
     flex-direction: column;
@@ -365,16 +326,23 @@ footer p {
     font-size: 16px;
     padding: 6px;
   }
-  #lyramayorista {
+ /* #lyramayorista {
     flex-direction: column;
     align-items: flex-start;
-  }
+  }*/
   #mayorista{
-    padding: 0;
+    padding: 8px;
   }
   .logo {
-    width: 50px;
+    width: 60px;
     margin: 10px;
+  }
+  .collage {
+    width: 100%;
+  }
+  .mirror, .collage2,
+  .mirror2 {
+    display: none;
   }
 }
 
@@ -383,20 +351,17 @@ footer p {
     margin-left: 60px;
   }
   #menu {
-    width: 60px;
+    width: 68px;
     font-size: 12px;
     padding-bottom: 10px;
   }
   .rubro-title {
     display: none;
   }
-  .collage,
-  .mirror {
-    width: 50%;
-  }
-  .collage2,
-  .mirror2 {
-    display: none;
+  .rubro-title-small{
+    display: block;
+    font-size: 11px;
+    margin: 5px;
   }
   .car {
     width: 50px;
@@ -417,3 +382,4 @@ footer p {
     font-size: 20px;
   }
 }
+

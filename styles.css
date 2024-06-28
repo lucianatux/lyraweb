@@ -6,7 +6,7 @@
 :root {
   --first-color: #fefefe;
   --second-color: #131313;
-  --third-color: #198c90;
+  --third-color: #068899;
   --fourth-color: #125e60;
   --fifth-color: #3d444c;
   --sixth-color: #e6736f;
@@ -22,7 +22,10 @@
 body {
   font-family: Arial, sans-serif;
   font-size: 14px;
-  background-color: var(--first-color);
+  background: url("./fondoblanco.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 a {
   text-decoration: none !important;
@@ -173,7 +176,6 @@ a {
   cursor: pointer;
 }
 
-/*****************RUBROS EFECTOS*****************/
 
 
 /*****************SEARCH*****************/
@@ -201,15 +203,27 @@ a {
 }
 
 /*****************FORM*****************/
+
 #contenedor-formulario {
-  background: var(--first-color);
+  background: #fff5;
   border-radius: 5px;
   border: 3px solid var(--third-color);
-  padding: 10px;
+  box-shadow: 0px 0px 10px var(--second-color);
+  padding: 30px;
   margin: 20px;
 }
 #titulo-formulario {
   color: var(--fifth-color);
+}
+#lottie-info{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lottie-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .icono-contacto {
   width: 80px;
@@ -218,11 +232,17 @@ a {
 form {
   text-align: left;
 }
+.form-elem{
+  padding: 10px 0;
+}
 #send-button {
-  background-color: var(--sixth-color);
+  background-image: linear-gradient(to right, #e0e0e0 0%, #b0b0b0 50%, #e0e0e0 100%); /* Degradado lineal de gris claro a gris oscuro */
+  border: 1px solid #ccc; /* Borde plateado de 1px */
+  box-shadow: 2px 2px 5px var(--second-color);
+  text-shadow: 0px 0px 10px var(--second-color);
 }
 #send-button:hover {
-  box-shadow: 0px 0px 10px var(--second-color);
+  box-shadow: 2px 2px 10px var(--second-color);
 }
 
 /*****************CAROUSEL*****************/
@@ -345,11 +365,14 @@ footer p {
   .mirror2 {
     display: none;
   }
+  #contenedor-formulario {
+    margin: 5px;
+  }
 }
 
 @media (max-width: 768px) {
   #content {
-    margin-left: 60px;
+    margin-left: 70px;
   }
   #menu {
     width: 68px;

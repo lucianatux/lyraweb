@@ -70,6 +70,7 @@ a {
   text-shadow: 1px 1px 5px var(--second-color);
   background-color: var(--fourth-color);
   font-size: 16px;
+  color: var(--first-color);
 }
 
 .rubro-icon {
@@ -309,7 +310,7 @@ footer p {
 
 @media (max-width: 568px) {
   .img-and-text img {
-    max-width: 200px;
+    max-width: 280px;
     padding: 0 10px;
   }
   footer{

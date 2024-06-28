@@ -1,8 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-// EFECTOS RUBROS
-
-
-
 
   // BRISEIDA JS
   const briseida = document.getElementById("briseida");

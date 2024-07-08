@@ -214,6 +214,9 @@ a {
 }
 #titulo-formulario {
   color: var(--fifth-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #lottie-info{
   display: flex;
@@ -353,6 +356,9 @@ footer p {
   .img-and-text img {
     max-width: 280px;
     padding: 0 10px;
+  }
+  #titulo-formulario{
+    flex-direction: column;
   }
   #contenedor-formulario {
     margin: 5px;

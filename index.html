@@ -151,47 +151,10 @@
               </div>
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselFade1" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselFade1" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-        <!--
-        <div id="carouselMobile1" class="carousel slide carousel-fade">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="slides d-flex w-100">
-                <div class="img-and-text">
-                  <img src="./promos/lib.jpg" alt="..." />
-                  <p class="text-center">descripcion 1</p>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="slides d-flex w-100">
-                <div class="img-and-text">
-                  <img src="./promos/hebillas.jpeg" alt="..." />
-                  <p class="text-center">descripcion 1</p>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="slides d-flex w-100">
-                <div class="img-and-text">
-                  <img src="./promos/funky.jpeg" alt="..." />
-                  <p class="text-center">descripcion 2</p>
-                </div>
-              </div>
-            </div>
-          </div>
           <button
             class="carousel-control-prev"
             type="button"
-            data-bs-target="#carouselMobile1"
+            data-bs-target="#carouselFade1"
             data-bs-slide="prev"
           >
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -200,15 +163,13 @@
           <button
             class="carousel-control-next"
             type="button"
-            data-bs-target="#carouselMobile1"
+            data-bs-target="#carouselFade1"
             data-bs-slide="next"
           >
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
         </div>
-        -->
-        
       </section>
 
       <!----------------------FORM---------------------->
@@ -216,31 +177,33 @@
       <div id="form">
         <div id="contenedor-formulario">
           <div class="text-center m-4" id="titulo-formulario">
-              <div id="lottie-info">
-                
-                <div class="lottie-div">
-                  <lottie-player
-                    src="./assets/caja.json"
-                    background="transparent"
-                    speed="1"
-                    style="width: 100px; height: 100px"
-                    loop
-                    autoplay
-                  ></lottie-player>
-                </div>
-                <h2>Contáctanos</h2>
+            <div>
+              <h2>Contáctanos</h2>
+              <p>
+                Completa este formulario y/o
+                escríbenos por whatsapp al 3512309375
+                <a href="https://wa.me/543512309375" target="_blank">
+                  <img
+                    class="rubro-icon m-1"
+                    src="./assets/whatsapp.png"
+                    alt=""
+                  />
+                </a>
+              </p>
+            </div>
+            <div id="lottie-info">
+              <div class="lottie-div">
+                <lottie-player
+                  src="./assets/02.json"
+                  background="transparent"
+                  speed="1"
+                  style="width: 250px; height: 250px"
+                  loop
+                  autoplay
+                ></lottie-player>
               </div>
-            <p>
-              Completa este formulario y/o <br />
-              escríbenos por whatsapp al 3512309375
-              <a href="https://wa.me/543512309375" target="_blank">
-                <img
-                  class="rubro-icon m-1"
-                  src="./assets/whatsapp.png"
-                  alt=""
-                />
-              </a>
-            </p>
+            </div>
+         
           </div>
 
           <form
@@ -286,7 +249,7 @@
               <div class="col-sm-12 col-md-6">
                 <div class="form-elem">
                   <label for="interests" class="mb-3"
-                    >Seleccione los rubros de su interés:</label
+                    >Selecciona los rubros de tu interés:</label
                   >
                   <div id="interests">
                     <div>

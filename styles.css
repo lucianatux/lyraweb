@@ -250,15 +250,23 @@ form {
 
 /*****************CAROUSEL*****************/
 .slides {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.img-and-text {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center; 
 }
 .img-and-text img {
   max-width: 340px;
   padding: 0 20px;
 }
 .img-and-text p {
+  width: 70%;
   height: 200px;
   padding: 20px;
 }
@@ -270,15 +278,15 @@ form {
     0,
     0,
     0.5
-  ); /* Cambia el color de fondo de las flechas */
-  border-radius: 50%; /* Hace que las flechas sean redondas */
+  );
+  border-radius: 50%; 
   width: 50px;
   height: 50px;
 }
 
 .carousel-control-prev,
 .carousel-control-next {
-  width: 5%; /* Aumenta el área de clic de las flechas */
+  width: 5%; 
 }
 
 /*****************FOOTER*****************/

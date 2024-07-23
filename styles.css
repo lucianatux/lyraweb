@@ -250,7 +250,6 @@ form {
 
 /*****************CAROUSEL*****************/
 .slides {
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -266,9 +265,24 @@ form {
   padding: 0 20px;
 }
 .img-and-text p {
-  width: 70%;
-  height: 200px;
-  padding: 20px;
+  width: 200px;
+  height: 230px;
+  padding: 10px;
+  position: relative;
+  font-size: 15px;
+}
+.want-btn{
+  padding: 5px;
+  border-radius: 10px;
+  background: var(--first-color);
+  box-shadow: 1px 1px 4px var(--second-color);
+  position: absolute; 
+  left: 20%;
+  bottom: 0px;
+}
+.want-btn:hover{
+  color: var(--first-color);
+  background: var(--third-color);
 }
 
 .carousel-control-prev-icon,
@@ -319,7 +333,7 @@ footer p {
 
 /*****************RESPONSIVE*****************/
 
-@media (max-width: 768px) and (min-width: 569px) {
+@media (max-width: 868px) and (min-width: 569px) {
   .lyra{
     font-size: 28px;
   }
@@ -336,6 +350,10 @@ footer p {
   .img-and-text img {
     max-width: 300px;
     padding: 0 10px;
+  }
+  .img-and-text p{
+    width: 250px;
+    font-size: 16px;
   }
 }
 
@@ -365,6 +383,10 @@ footer p {
     max-width: 280px;
     padding: 0 10px;
   }
+  .img-and-text p{
+    width: 200px;
+    font-size: 14px;
+  }
   #titulo-formulario{
     flex-direction: column;
   }
@@ -380,7 +402,7 @@ footer p {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 868px) {
   #content {
     margin-left: 70px;
   }

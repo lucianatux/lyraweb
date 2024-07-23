@@ -50,7 +50,7 @@ document.getElementById('formulario-contacto').addEventListener('submit', functi
 
 // CARRUSEL RESPONSIVE
 
-if (window.innerWidth <= 767.98) {
+if (window.innerWidth <= 868) {
   var carouselInner = document.querySelector('#carouselFade1 .carousel-inner');
   var slides = document.querySelectorAll('#carouselFade1 .carousel-item');
 
@@ -63,7 +63,7 @@ if (window.innerWidth <= 767.98) {
       
       // Crear un nuevo contenedor para la imagen y descripción
       var newSlides = document.createElement('div');
-      newSlides.classList.add('slides', 'd-flex', 'w-100');
+      newSlides.classList.add('slides');
 
       // Clonar el segundo conjunto de imagen y descripción
       var clonedSecondImgAndText = secondImgAndText.cloneNode(true);
@@ -81,6 +81,19 @@ if (window.innerWidth <= 767.98) {
     }
   });
 }
+
+//AGREGAR AL PEDIDO
+
+document.querySelectorAll('.want-btn').forEach(button => {
+  button.addEventListener('click', function() {
+    const productText = this.parentElement.textContent.replace('Agregar al pedido', '').trim();
+    const productContainer = document.createElement('div');
+    productContainer.textContent = productText;
+
+    document.getElementById('all-products-i-want').appendChild(productContainer);
+  });
+});
+
 
 
 

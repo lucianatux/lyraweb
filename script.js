@@ -105,17 +105,27 @@ document.querySelectorAll('.want-btn').forEach(button => {
 });
 
 
-//VER PEDIDO
+// VER PEDIDO
 const orderButton = document.getElementById("order"); 
 const productList = document.getElementById("my-order");
+const allProducts = document.getElementById("all-products-i-want");
+const message = document.getElementById("message-order-list");
 
-if (!orderButton || !productList) { 
-  console.error("Error: Could not find elements with IDs 'order' and 'all-products-i-want'");
+if (!orderButton || !productList || !allProducts || !message) { 
+  console.error("Error: Could not find one or more elements with specified IDs");
   return; 
 }
 
 orderButton.addEventListener('click', function() {
-  productList.style.display = productList.style.display === 'block' ? 'none' : 'block'; 
+  // Toggle the display of the order list
+  productList.style.display = productList.style.display === 'block' ? 'none' : 'block';
+  
+  // Check if the all-products-i-want div is empty
+  if (allProducts.children.length === 0) {
+    message.textContent = "Aún no has seleccionado ningún artículo";
+  } else {
+    message.textContent = "";
+  }
 });
 
 

@@ -87,14 +87,36 @@ if (window.innerWidth <= 868) {
 document.querySelectorAll('.want-btn').forEach(button => {
   button.addEventListener('click', function() {
     const productText = this.parentElement.textContent.replace('Agregar al pedido', '').trim();
+
+    // Crear un nuevo input oculto para enviar el nombre del producto
+    const hiddenInput = document.createElement('input');
+    hiddenInput.type = 'hidden';
+    hiddenInput.name = 'products[]'; // Array de productos
+    hiddenInput.value = productText;
+
+    // Agregar el input al formulario
+    document.getElementById('order-form').appendChild(hiddenInput);
+
+    // Agregar una visualización del producto seleccionado
     const productContainer = document.createElement('div');
     productContainer.textContent = productText;
-
     document.getElementById('all-products-i-want').appendChild(productContainer);
   });
 });
 
 
+//VER PEDIDO
+const orderButton = document.getElementById("order"); 
+const productList = document.getElementById("my-order");
+
+if (!orderButton || !productList) { 
+  console.error("Error: Could not find elements with IDs 'order' and 'all-products-i-want'");
+  return; 
+}
+
+orderButton.addEventListener('click', function() {
+  productList.style.display = productList.style.display === 'block' ? 'none' : 'block'; 
+});
 
 
 

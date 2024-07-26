@@ -78,6 +78,7 @@
             <span class="lyra">LYRA </span>
             <p id="mayorista">Distribuidora mayorista</p>
           </div>
+          <div id="order">Mi pedido <span class="fs-4">📝</span></div>
         </div>
         <div class="div-collage">
           <img class="collage" src="./assets/col3.png" alt="" />
@@ -87,7 +88,52 @@
         </div>
 
         <p class="slogan">Un universo de productos para tu negocio</p>
+        <div id="my-order">
+          <h4>Mi pedido</h4>
+          <form
+            id="order-form"
+            action="https://formspree.io/f/xeqbkoww"
+            method="post"
+          >
+            <div class="row">
+              <div class="col-sm-12 col-md-12">
+                <div class="form-elem">
+                  <label for="name">Nombre</label>
+                  <input
+                    type="input"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                    placeholder="Nombre"
+                    required
+                  />
+                </div>
 
+                <div class="form-elem">
+                  <label for="phone">Teléfono</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    name="phone"
+                    id="phone"
+                    placeholder="549 351"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="form-elem form-control" id="all-products-i-want"></div>
+            <div class="form-elem">
+              <button
+                id="send-button"
+                type="submit"
+                class="btn w-100 text-light"
+              >
+                Enviar
+              </button>
+            </div>
+          </form>
+        </div>
         <div id="search-container">
           <input type="text" id="search-input" placeholder="Buscar..." />
           <button id="search-button">Buscar</button>
@@ -118,18 +164,18 @@
               <div class="slides">
                 <div class="img-and-text first">
                   <img src="./promos/cartu.jpeg" alt="..." />
-                  <p class="text-center">♡ PROMO CARTULINAS ♡<br/>
-                    50 cartulinas 
-                    (10 colores a elección. 5 unidades por color)
-                    $23940 
-                  <button class="want-btn">Agregar al pedido</button>
+                  <p class="text-center">
+                    PROMO CARTULINAS<br />
+                    50 cartulinas (10 colores a elección. 5 unidades por color)
+                    $23940
+                    <button class="want-btn">Agregar al pedido</button>
                   </p>
                 </div>
                 <div class="img-and-text second">
                   <img src="./promos/bolsas.jpeg" alt="..." />
-                  <p class="text-center">♡ PROMO BOLSAS ♡<br/>
-                    50 bolsas (5 de cada tamaño y estilo)
-                    $25700
+                  <p class="text-center">
+                    PROMO BOLSAS<br />
+                    50 bolsas (5 de cada tamaño y estilo) $25700
                     <button class="want-btn">Agregar al pedido</button>
                   </p>
                 </div>
@@ -139,17 +185,18 @@
               <div class="slides">
                 <div class="img-and-text first">
                   <img src="./promos/libritos.jpg" alt="..." />
-                  <p class="text-center">♡ PROMO LIBRITOS PARA COLOREAR ♡<br/>
-                    40 libritos surtidos
-                    $11680
+                  <p class="text-center">
+                    PROMO LIBRITOS PARA COLOREAR<br />
+                    40 libritos surtidos $11680
                     <button class="want-btn">Agregar al pedido</button>
                   </p>
                 </div>
                 <div class="img-and-text second">
                   <img src="./promos/vinchas.jpeg" alt="..." />
-                  <p class="text-center">♡ PROMO ACCESORIOS PELO ♡<br/>
-                    10 vinchas infantiles <br/> 10 scrunchis y 10 moños de gasa
-                    $26000
+                  <p class="text-center">
+                    PROMO ACCESORIOS PELO<br />
+                    10 vinchas infantiles <br />
+                    10 scrunchis y 10 moños de gasa $26000
                     <button class="want-btn">Agregar al pedido</button>
                   </p>
                 </div>
@@ -159,15 +206,19 @@
               <div class="slides">
                 <div class="img-and-text first">
                   <img src="./promos/cartus.jpg" alt="..." />
-                  <p class="text-center">♡PROMO CARTUCHERAS♡<br/>
-                    20 cartucheras de neoprene sublimadas $50500<br/> Diseños a elección
+                  <p class="text-center">
+                    PROMO CARTUCHERAS<br />
+                    20 cartucheras de neoprene sublimadas $50500<br />
+                    Diseños a elección
                     <button class="want-btn">Agregar al pedido</button>
                   </p>
                 </div>
                 <div class="img-and-text second">
                   <img src="./promos/kit.jpg" alt="..." />
-                  <p class="text-center">♡ PROMO TINTURAS ♡<br/>
-                    20 tinturas kit EstereoColor<br/> Y 10 funky surtidas $62000
+                  <p class="text-center">
+                    PROMO TINTURAS<br />
+                    20 tinturas kit EstereoColor<br />
+                    Y 10 funky surtidas $62000
                     <button class="want-btn">Agregar al pedido</button>
                   </p>
                 </div>
@@ -204,8 +255,8 @@
             <div>
               <h2>Contáctanos</h2>
               <p>
-                Completa este formulario y/o
-                escríbenos por whatsapp al 3512309375
+                Completa este formulario y/o escríbenos por whatsapp al
+                3512309375
                 <a href="https://wa.me/543512309375" target="_blank">
                   <img
                     class="rubro-icon m-1"
@@ -227,7 +278,6 @@
                 ></lottie-player>
               </div>
             </div>
-         
           </div>
 
           <form

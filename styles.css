@@ -176,6 +176,34 @@ a {
   cursor: pointer;
 }
 
+/*****************ORDER*****************/
+#order{
+  background: var(--third-color);
+  color: var(--first-color);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px var(--second-color);
+  cursor: pointer;
+  font-size: 14px;
+  position: absolute;
+  right: 20px;
+}
+#order:hover{
+  box-shadow: 2px 2px 4px var(--first-color);
+}
+#my-order{
+  width: 50%;
+  height: auto;
+  padding: 50px;
+  text-align: center;
+  display: none;
+  position: absolute;
+  top: 5%;
+  left: 25%;
+  background: var(--first-color);
+  border: 5px solid var(--third-color);
+  border-radius: 20px;
+}
 
 
 /*****************SEARCH*****************/
@@ -335,10 +363,18 @@ footer p {
 
 @media (max-width: 868px) and (min-width: 569px) {
   .lyra{
-    font-size: 28px;
+    font-size: 24px;
   }
-  .div-lyra {
-    font-size: 20px;
+  #mayorista{
+    font-size: 14px;
+  }
+  #order{
+    font-size: 12px;
+    padding: 5px;
+    position: unset;
+  }
+  #logo{
+    width: 70px;
   }
   .collage, .mirror {
     width: 50%;
@@ -359,18 +395,23 @@ footer p {
 
 @media (max-width: 568px) {
   .lyra{
-    font-size: 22px;
+    font-size: 20px;
   }
   .div-lyra {
     font-size: 16px;
     padding: 6px;
   }
-  #mayorista{
-    padding: 8px;
-  }
   .logo {
-    width: 60px;
-    margin: 10px;
+    width: 50px;
+    margin: 5px;
+  }
+  #mayorista{
+    font-size: 14px;
+  }
+  #order{
+    font-size: 12px;
+    padding: 3px;
+    position: unset;
   }
   .collage {
     width: 100%;

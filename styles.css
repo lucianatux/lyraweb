@@ -102,17 +102,17 @@ a {
   justify-content: space-between;
 }
 .div-lyra {
-  font-size: 25px;
+  font-size: 22px;
   background: var(--fifth-color);
   color: var(--first-color);
   width: 100%;
   padding: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 .lyra {
-  font-size: 35px;
+  font-size: 32px;
   font-family: "Aclonica", "Arial";
 }
 #lyramayorista {
@@ -185,26 +185,26 @@ a {
   box-shadow: 2px 2px 4px var(--second-color);
   cursor: pointer;
   font-size: 14px;
-  position: absolute;
-  right: 20px;
 }
 #order:hover{
   box-shadow: 2px 2px 4px var(--first-color);
 }
 #my-order{
-  width: 50%;
+  width: 70%;
   height: auto;
   padding: 50px;
   text-align: center;
   display: none;
   position: absolute;
-  top: 5%;
-  left: 25%;
+  top: 110px;
+  left: 190px;
   background: var(--first-color);
   border: 5px solid var(--third-color);
   border-radius: 20px;
 }
-
+#order-btn-text{
+  margin: 0px;
+}
 
 /*****************SEARCH*****************/
 
@@ -371,7 +371,6 @@ footer p {
   #order{
     font-size: 12px;
     padding: 5px;
-    position: unset;
   }
   #logo{
     width: 70px;
@@ -391,11 +390,19 @@ footer p {
     width: 250px;
     font-size: 16px;
   }
+  #my-order{
+    width: calc(100% - 80px);
+    height: auto;
+    padding: 20px;
+    position: absolute;
+    top: 100px;
+    left: 80px;
+  }
 }
 
 @media (max-width: 568px) {
   .lyra{
-    font-size: 20px;
+    font-size: 22px;
   }
   .div-lyra {
     font-size: 16px;
@@ -406,12 +413,20 @@ footer p {
     margin: 5px;
   }
   #mayorista{
-    font-size: 14px;
+    display: none;
   }
   #order{
-    font-size: 12px;
-    padding: 3px;
-    position: unset;
+    font-size: 10px;
+    padding: 5px;
+margin-left: 10px;    
+  }
+  #my-order{
+    width: calc(100% - 80px);
+    height: auto;
+    padding: 20px;
+    position: absolute;
+    top: 100px;
+    left: 80px;
   }
   .collage {
     width: 100%;
@@ -481,5 +496,6 @@ footer p {
   .second {
     display: none;
   }
+  
 }
 

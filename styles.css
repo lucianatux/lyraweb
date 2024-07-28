@@ -201,9 +201,16 @@ a {
   background: var(--first-color);
   border: 5px solid var(--third-color);
   border-radius: 20px;
+  z-index: 3;
 }
 #order-btn-text{
   margin: 0px;
+}
+.remove-btn{
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 5px;
+  margin-left: 5px;
 }
 
 /*****************SEARCH*****************/

@@ -5,6 +5,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const allProducts = document.getElementById("all-products-i-want");
   const message = document.getElementById("message-order-list");
 
+  //ACCESO DIRECTO SIN SCROLL A LAS SECCIONES DEL MENU
+  document.querySelectorAll('#menu a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent the default anchor click behavior
+
+      const targetId = this.getAttribute('href').substring(1); // Get the target section id
+      const targetSection = document.getElementById(targetId); // Get the target section element
+
+      targetSection.scrollIntoView({ behavior: 'instant' }); // Instantly scroll to the target section
+    });
+  });
+
+//LISTA DE "MI PEDIDO"
   storedProducts.forEach((productText) => {
     // Crear un contenedor para el producto seleccionado con botón de eliminación
     const productContainer = document.createElement("div");
@@ -157,36 +170,47 @@ document.addEventListener("DOMContentLoaded", function () {
   // CARRUSEL RESPONSIVE
 
   if (window.innerWidth <= 868) {
-    var carouselInner = document.querySelector(
-      "#carouselFade1 .carousel-inner"
-    );
-    var slides = document.querySelectorAll("#carouselFade1 .carousel-item");
-
-    slides.forEach(function (slide) {
-      var secondImgAndText = slide.querySelector(".img-and-text.second");
-      if (secondImgAndText) {
-        // Crear una nueva slide
-        var newSlide = document.createElement("div");
-        newSlide.classList.add("carousel-item");
-
-        // Crear un nuevo contenedor para la imagen y descripción
-        var newSlides = document.createElement("div");
-        newSlides.classList.add("slides");
-
-        // Clonar el segundo conjunto de imagen y descripción
-        var clonedSecondImgAndText = secondImgAndText.cloneNode(true);
-        clonedSecondImgAndText.classList.remove("second");
-        clonedSecondImgAndText.classList.add("first");
-
-        // Agregar el conjunto clonado al nuevo contenedor
-        newSlides.appendChild(clonedSecondImgAndText);
-
-        // Agregar el nuevo contenedor a la nueva slide
-        newSlide.appendChild(newSlides);
-
-        // Agregar la nueva slide al carrusel
-        carouselInner.appendChild(newSlide);
-      }
+    // Selecciona todos los carruseles que tienen un id que empieza con "carouselFade"
+    var carousels = document.querySelectorAll('[id^="carouselFade"]');
+  
+    carousels.forEach(function (carousel) {
+      var carouselInner = carousel.querySelector(".carousel-inner");
+      var slides = carousel.querySelectorAll(".carousel-item");
+  
+      slides.forEach(function (slide) {
+        var secondImgAndText = slide.querySelector(".img-and-text.second");
+        if (secondImgAndText) {
+          // Crear una nueva slide
+          var newSlide = document.createElement("div");
+          newSlide.classList.add("carousel-item");
+  
+          // Crear un nuevo contenedor para la imagen y descripción
+          var newSlides = document.createElement("div");
+          newSlides.classList.add("slides");
+  
+          // Clonar el segundo conjunto de imagen y descripción
+          var clonedSecondImgAndText = secondImgAndText.cloneNode(true);
+          clonedSecondImgAndText.classList.remove("second");
+          clonedSecondImgAndText.classList.add("first");
+  
+          // Agregar el conjunto clonado al nuevo contenedor
+          newSlides.appendChild(clonedSecondImgAndText);
+  
+          // Agregar el nuevo contenedor a la nueva slide
+          newSlide.appendChild(newSlides);
+  
+          // Agregar la nueva slide al carrusel
+          carouselInner.appendChild(newSlide);
+        }
+      });
     });
   }
+
+  
+
+
+
+
+
+  
 });

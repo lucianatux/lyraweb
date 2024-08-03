@@ -120,6 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
       message.textContent = "";
     }
   });
+  
   // BRISEIDA JS
   const briseida = document.getElementById("briseida");
   briseida.addEventListener("mouseover", function () {
@@ -212,5 +213,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  
+
 });

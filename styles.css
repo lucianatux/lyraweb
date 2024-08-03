@@ -497,12 +497,6 @@ margin-left: 10px;
   .carta-img-div{
     flex-direction: column;
   }
-  #titulo-formulario{
-    flex-direction: column;
-  }
-  #contenedor-formulario {
-    margin: 5px;
-  }
   footer{
     padding: 10px;
   }
@@ -550,6 +544,12 @@ margin-left: 10px;
   .second {
     display: none;
   }
-  
+  #contenedor-formulario {
+    padding: 10px;
+    margin: 5px;
+  }
+  #titulo-formulario{
+    flex-direction: column;
+  }
 }
 

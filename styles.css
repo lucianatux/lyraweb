@@ -343,6 +343,9 @@ form {
 }
 
 /*****************SECTIONS*****************/
+.menu-section{
+  margin: 20px;
+}
 .extra-div{
   display: flex;
   flex-direction: column;
@@ -452,6 +455,9 @@ footer p {
 }
 
 @media (max-width: 568px) {
+  .menu-section{
+    margin: 0px;
+  }
   .lyra{
     font-size: 22px;
   }
@@ -488,7 +494,7 @@ margin-left: 10px;
   }
   .img-and-text img {
     max-width: 280px;
-    padding: 0 10px;
+    padding: 10px 0;
   }
   .img-and-text p{
     width: 200px;

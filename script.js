@@ -207,7 +207,35 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  //CARRUSEL CARTERAS Y AFINES CON SELECT
+  const select = document.getElementById('carteras-select');
+  const galcarteras = document.getElementById('carouselFade5');
+  const galbandoleras = document.getElementById('carouselFade6');
+  const galmochilas = document.getElementById('carouselFade7');
+  const galaccesorios = document.getElementById('carouselFade8');
+
+  galcarteras.style.display = 'block';
+  galbandoleras.style.display = 'none';
+  galmochilas.style.display = 'none';
+  galaccesorios.style.display = 'none';
   
+  select.addEventListener('change', function() {
+    // Ocultar todas las galerías
+    galcarteras.style.display = 'none';
+    galbandoleras.style.display = 'none';
+    galmochilas.style.display = 'none';
+    galaccesorios.style.display = 'none';
+  
+    // Mostrar la galería seleccionada
+    var selectedGallery = document.getElementById(this.value);
+    if (selectedGallery) {
+      selectedGallery.style.display = 'block';
+    }
+  });
+
+
+
+
 
 
 

@@ -389,17 +389,26 @@ form {
 #carteras-select:hover{
   box-shadow: 0px 0px 6px var(--third-color);
 }
+
+
 .pdf-viewer {
   width: 100%;
-  overflow: hidden; /* Evita desbordamiento */
+  overflow: hidden; 
   border-radius: 20px;
 }
 .pdf-viewer iframe {
   width: 100%;
-  height: 300px; /* Ajusta según sea necesario */
-  border: none; /* Elimina el borde */
+  height: 300px;
+  border: none; 
 }
-
+.pdf-viewer-lib {
+  width: 100%;
+  border-radius: 20px;
+}
+.pdf-viewer-lib iframe {
+  width: 100%;
+  height: 300px;
+}
 
 
 
@@ -520,6 +529,12 @@ margin-left: 10px;
   }
   .carta-img-div{
     flex-direction: column;
+  }
+  .download-btn{
+   font-size: 10px;
+  }
+  .icon-img{
+    width: 20px;
   }
   footer{
     padding: 10px;

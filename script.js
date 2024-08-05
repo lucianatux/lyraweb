@@ -233,6 +233,42 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  //PDF LIBRERIA
+  const url = './libreria/12junioLib.pdf';
+
+  let pdfjsLib = window['pdfjs-dist/build/pdf'];
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.worker.min.js';
+
+  let loadingTask = pdfjsLib.getDocument(url);
+  loadingTask.promise.then(function(pdf) {
+    console.log('PDF loaded');
+    
+    // Fetch the first page
+    pdf.getPage(1).then(function(page) {
+      console.log('Page loaded');
+      
+      let scale = 1.5;
+      let viewport = page.getViewport({ scale: scale });
+
+      let canvas = document.getElementById('pdf-canvas');
+      let context = canvas.getContext('2d');
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+
+      // Render PDF page into canvas context
+      let renderContext = {
+        canvasContext: context,
+        viewport: viewport
+      };
+      let renderTask = page.render(renderContext);
+      renderTask.promise.then(function() {
+        console.log('Page rendered');
+      });
+    });
+  }, function(reason) {
+    console.error(reason);
+  });
+
 
 
 

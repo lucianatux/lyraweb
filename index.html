@@ -341,28 +341,26 @@
           </button>
         </div>
         <div class="extra-div my-5">
-          <h6 class="p-2">Mira aquí el catálogo completo de librería:</h6>
-          <div class="pdf-viewer">
-            <iframe 
-              src="./libreria/12junioLib.pdf" 
-            ></iframe>
-          </div>
-          <div class="btn-div">
-            <a
-              href="./libreria/12junioLib.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <button class="download-btn">
-                Ver catálogo en una pestaña nueva <img
-                class="icon-img"
-                src="./assets/openicon.png"
-                alt=""
-              />
-              </button>
+          <h6>Catálogo completo de librería y juguetería</h6>
+          
+          <div class="pdf-controls">
+            <button id="prev-page">Anterior</button>
+            <button id="next-page">Siguiente</button>
+            <span>Página: <span id="page-num"></span> / <span id="page-count"></span></span>
+            <button id="zoom-in">Zoom +</button>
+            <button id="zoom-out">Zoom -</button>
+            <input type="text" id="search-input" placeholder="Buscar texto">
+            <button id="search-btn">Buscar</button>
+            <a href="./libreria/agostoLibreriaMayorista.pdf" target="_blank" rel="noopener noreferrer">
+              <button class="open-btn">Abrir en nueva pestaña</button>
             </a>
           </div>
+          <div class="pdf-viewer">
+            <canvas id="pdf-canvas"></canvas>
+          </div>
         </div>
+        
+        
       </section>
       <!----------------------ACCESORIOS PARA EL PELO---------------------->
       <section class="menu-section" id="hebillas">

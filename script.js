@@ -234,39 +234,147 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   //PDF LIBRERIA
-  const url = './libreria/12junioLib.pdf';
+  const url = './libreria/agostoLibreriaMayorista.pdf';
 
-  let pdfjsLib = window['pdfjs-dist/build/pdf'];
+  let pdfDoc = null,
+      pageNum = 1,
+      pageRendering = false,
+      pageNumPending = null,
+      scale = 1.0,
+      canvas = document.getElementById('pdf-canvas'),
+      ctx = canvas.getContext('2d');
+
   pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.worker.min.js';
 
-  let loadingTask = pdfjsLib.getDocument(url);
-  loadingTask.promise.then(function(pdf) {
-    console.log('PDF loaded');
-    
-    // Fetch the first page
-    pdf.getPage(1).then(function(page) {
-      console.log('Page loaded');
-      
-      let scale = 1.5;
+  function renderPage(num) {
+    pageRendering = true;
+    pdfDoc.getPage(num).then(function(page) {
       let viewport = page.getViewport({ scale: scale });
-
-      let canvas = document.getElementById('pdf-canvas');
-      let context = canvas.getContext('2d');
       canvas.height = viewport.height;
       canvas.width = viewport.width;
 
-      // Render PDF page into canvas context
       let renderContext = {
-        canvasContext: context,
+        canvasContext: ctx,
         viewport: viewport
       };
       let renderTask = page.render(renderContext);
+
       renderTask.promise.then(function() {
-        console.log('Page rendered');
+        pageRendering = false;
+        if (pageNumPending !== null) {
+          renderPage(pageNumPending);
+          pageNumPending = null;
+        }
       });
     });
-  }, function(reason) {
-    console.error(reason);
+
+    document.getElementById('page-num').textContent = num;
+  }
+
+  function queueRenderPage(num) {
+    if (pageRendering) {
+      pageNumPending = num;
+    } else {
+      renderPage(num);
+    }
+  }
+
+  function onPrevPage() {
+    if (pageNum <= 1) {
+      return;
+    }
+    pageNum--;
+    queueRenderPage(pageNum);
+  }
+
+  function onNextPage() {
+    if (pageNum >= pdfDoc.numPages) {
+      return;
+    }
+    pageNum++;
+    queueRenderPage(pageNum);
+  }
+
+  function onZoomIn() {
+    scale += 0.2;
+    queueRenderPage(pageNum);
+  }
+
+  function onZoomOut() {
+    if (scale > 0.4) {
+      scale -= 0.2;
+      queueRenderPage(pageNum);
+    }
+  }
+
+  
+  function findText(page, query) {
+    return page.getTextContent().then(function(textContent) {
+      let matches = [];
+      textContent.items.forEach(function(item) {
+        if (item.str.toLowerCase().includes(query.toLowerCase())) {
+          matches.push(item);
+        }
+      });
+      return matches;
+    });
+  }
+  
+
+  
+  function highlightText(item, page, viewport) {
+    const transform = pdfjsLib.Util.transform(
+      pdfjsLib.Util.transform(viewport.transform, item.transform),
+      [1, 0, 0, -1, 0, page.view[3]]
+    );
+
+    const x = transform[4];
+    const y = transform[5];
+    const width = item.width * transform[0];
+    const height = item.height * transform[3];
+
+    const highlightDiv = document.createElement('div');
+    highlightDiv.style.position = 'absolute';
+    highlightDiv.style.left = `${x}px`;
+    highlightDiv.style.top = `${y - height}px`;
+    highlightDiv.style.width = `${width}px`;
+    highlightDiv.style.height = `${height}px`;
+    highlightDiv.style.backgroundColor = 'rgba(255, 255, 0, 0.5)';
+    highlightDiv.style.zIndex = 10;
+    highlightDiv.style.pointerEvents = 'none';
+    document.querySelector('.pdf-viewer').appendChild(highlightDiv);
+  }
+
+  function clearHighlights() {
+    const highlights = document.querySelectorAll('.pdf-viewer div');
+    highlights.forEach(highlight => highlight.remove());
+  }
+
+  function onSearch() {
+    clearHighlights();
+    searchIndex = -1;
+    const query = document.getElementById('search-input').value;
+    pdfDoc.getPage(pageNum).then(function(page) {
+      findText(page, query).then(function(matches) {
+        if (matches.length > 0) {
+          searchMatches = matches;
+          searchIndex = 0;
+          highlightText(matches[0], page, page.getViewport({ scale: scale }));
+        }
+      });
+    });
+  }
+
+  document.getElementById('prev-page').addEventListener('click', onPrevPage);
+  document.getElementById('next-page').addEventListener('click', onNextPage);
+  document.getElementById('zoom-in').addEventListener('click', onZoomIn);
+  document.getElementById('zoom-out').addEventListener('click', onZoomOut);
+  document.getElementById('search-btn').addEventListener('click', onSearch);
+
+  pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
+    pdfDoc = pdfDoc_;
+    document.getElementById('page-count').textContent = pdfDoc.numPages;
+    renderPage(pageNum);
   });
 
 

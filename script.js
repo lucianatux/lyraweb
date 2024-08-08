@@ -164,28 +164,33 @@ document.querySelectorAll(".want-btn").forEach((button) => {
 });
 
 
+// VER PEDIDO
+if (!orderButton || !productList || !allProducts || !message) {
+  console.error(
+    "Error: Could not find one or more elements with specified IDs"
+  );
+  return;
+}
 
+orderButton.addEventListener("click", function () {
+  // Toggle the display of the order list
+  const isVisible = productList.style.display === "block";
+  productList.style.display = isVisible ? "none" : "block";
 
+  // Modificar el HTML del botón dependiendo del estado
+  const orderButtonText = document.getElementById("order-btn-text");
+  orderButtonText.innerHTML = isVisible
+    ? '<span class="fs-4">📝</span> Mi pedido' // HTML cuando la lista está oculta
+    : '<span class="fs-5">📝</span> Ocultar pedido'; // HTML cuando la lista está visible
 
-  // VER PEDIDO
-  if (!orderButton || !productList || !allProducts || !message) {
-    console.error(
-      "Error: Could not find one or more elements with specified IDs"
-    );
-    return;
+  // Check if the all-products-i-want div is empty
+  if (allProducts.children.length === 0) {
+    message.textContent = "Aún no has seleccionado ningún artículo";
+  } else {
+    message.textContent = "";
   }
-  orderButton.addEventListener("click", function () {
-    // Toggle the display of the order list
-    productList.style.display =
-      productList.style.display === "block" ? "none" : "block";
+});
 
-    // Check if the all-products-i-want div is empty
-    if (allProducts.children.length === 0) {
-      message.textContent = "Aún no has seleccionado ningún artículo";
-    } else {
-      message.textContent = "";
-    }
-  });
 
   // BRISEIDA JS
   const briseida = document.getElementById("briseida");

@@ -311,6 +311,9 @@ form {
   position: relative;
   font-size: 15px;
 }
+.product-text{
+  height: 200px !important;
+}
 .product-input{
   height: 180px !important;
 }
@@ -340,11 +343,10 @@ form {
   width: 50px;
   height: 50px;
 }
-
-.carousel-control-prev,
-.carousel-control-next {
-  width: 5%; 
+.carousel-control-next, .carousel-control-prev {
+  top: unset !important;
 }
+
 .text-cart{
   text-align: center;
   height: 130px !important;

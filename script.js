@@ -47,6 +47,45 @@ document.addEventListener("DOMContentLoaded", function () {
       .appendChild(productContainer);
   });
 
+   // CARRUSEL RESPONSIVE
+
+   if (window.innerWidth <= 868) {
+    // Selecciona todos los carruseles que tienen un id que empieza con "carouselFade"
+    var carousels = document.querySelectorAll('[id^="carouselFade"]');
+
+    carousels.forEach(function (carousel) {
+      var carouselInner = carousel.querySelector(".carousel-inner");
+      var slides = carousel.querySelectorAll(".carousel-item");
+
+      slides.forEach(function (slide) {
+        var secondImgAndText = slide.querySelector(".img-and-text.second");
+        if (secondImgAndText) {
+          // Crear una nueva slide
+          var newSlide = document.createElement("div");
+          newSlide.classList.add("carousel-item");
+
+          // Crear un nuevo contenedor para la imagen y descripción
+          var newSlides = document.createElement("div");
+          newSlides.classList.add("slides");
+
+          // Clonar el segundo conjunto de imagen y descripción
+          var clonedSecondImgAndText = secondImgAndText.cloneNode(true);
+          clonedSecondImgAndText.classList.remove("second");
+          clonedSecondImgAndText.classList.add("first");
+
+          // Agregar el conjunto clonado al nuevo contenedor
+          newSlides.appendChild(clonedSecondImgAndText);
+
+          // Agregar el nuevo contenedor a la nueva slide
+          newSlide.appendChild(newSlides);
+
+          // Agregar la nueva slide al carrusel
+          carouselInner.appendChild(newSlide);
+        }
+      });
+    });
+  }
+
   // AGREGAR AL PEDIDO
 document.querySelectorAll(".want-btn").forEach((button) => {
   button.addEventListener("click", function () {
@@ -69,7 +108,7 @@ document.querySelectorAll(".want-btn").forEach((button) => {
 
     // Formatear el texto del producto
     const productDetails = color || quantity
-      ? `${productText} ${color ? `- Color: ${color}` : ""}${quantity ? `, Cantidad: ${quantity}` : ""}`
+      ? `${productText} ${color ? ` ${color}` : ""}${quantity ? ` ${quantity}` : ""}`
       : productText;
 
     console.log("Producto a agregar:", productDetails); // Verifica en la consola si se obtiene el texto correcto
@@ -195,44 +234,6 @@ document.querySelectorAll(".want-btn").forEach((button) => {
       this.reset(); // Reinicia los campos del formulario
     });
 
-  // CARRUSEL RESPONSIVE
-
-  if (window.innerWidth <= 868) {
-    // Selecciona todos los carruseles que tienen un id que empieza con "carouselFade"
-    var carousels = document.querySelectorAll('[id^="carouselFade"]');
-
-    carousels.forEach(function (carousel) {
-      var carouselInner = carousel.querySelector(".carousel-inner");
-      var slides = carousel.querySelectorAll(".carousel-item");
-
-      slides.forEach(function (slide) {
-        var secondImgAndText = slide.querySelector(".img-and-text.second");
-        if (secondImgAndText) {
-          // Crear una nueva slide
-          var newSlide = document.createElement("div");
-          newSlide.classList.add("carousel-item");
-
-          // Crear un nuevo contenedor para la imagen y descripción
-          var newSlides = document.createElement("div");
-          newSlides.classList.add("slides");
-
-          // Clonar el segundo conjunto de imagen y descripción
-          var clonedSecondImgAndText = secondImgAndText.cloneNode(true);
-          clonedSecondImgAndText.classList.remove("second");
-          clonedSecondImgAndText.classList.add("first");
-
-          // Agregar el conjunto clonado al nuevo contenedor
-          newSlides.appendChild(clonedSecondImgAndText);
-
-          // Agregar el nuevo contenedor a la nueva slide
-          newSlide.appendChild(newSlides);
-
-          // Agregar la nueva slide al carrusel
-          carouselInner.appendChild(newSlide);
-        }
-      });
-    });
-  }
 
   //CARRUSEL CARTERAS Y AFINES CON SELECT
   const select = document.getElementById("carteras-select");

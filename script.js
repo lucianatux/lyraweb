@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // CARRUSEL RESPONSIVE
-
   if (window.innerWidth <= 868) {
     // Selecciona todos los carruseles que tienen un id que empieza con "carouselFade"
     var carousels = document.querySelectorAll('[id^="carouselFade"]');
@@ -95,15 +94,13 @@ document.addEventListener("DOMContentLoaded", function () {
       const parentElement = this.parentElement; // Contenedor 'p' que contiene inputs y botón
 
       // Verificar si el contenedor tiene inputs
-      const colorInput = parentElement.querySelector(".type-product");
+      const typeInput = parentElement.querySelector(".type-product");
       const quantityInput = parentElement.querySelector(".number-product");
 
       // Si existen inputs, verificar si están vacíos
-      if (colorInput && quantityInput) {
-        if (!colorInput.value.trim() || !quantityInput.value.trim()) {
-          alert(
-            "Por favor, completa los campos antes de agregar el producto."
-          );
+      if (typeInput && quantityInput) {
+        if (!typeInput.value.trim() || !quantityInput.value.trim()) {
+          alert("Por favor, completa los campos antes de agregar el producto.");
           return; // Salir de la función si no están completos
         }
       }
@@ -113,14 +110,14 @@ document.addEventListener("DOMContentLoaded", function () {
         .replace("Agregar al pedido", "")
         .trim();
 
-      let color = colorInput ? colorInput.value.trim() : "";
+      let color = typeInput ? typeInput.value.trim() : "";
       let quantity = quantityInput ? quantityInput.value.trim() : "";
 
       // Formatear el texto del producto
       const productDetails =
         color || quantity
-          ? `${productText} ${color ? ` ${color}` : ""}${
-              quantity ? ` ${quantity}` : ""
+          ? `${productText}${color ? ` ${color}` : ""}${
+              quantity ? ` cantidad: ${quantity}` : ""
             }`
           : productText;
 
@@ -190,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 2000); // Eliminar el mensaje después de 2 segundos
 
       // Reiniciar los inputs si existen
-      if (colorInput) colorInput.value = "";
+      if (typeInput) typeInput.value = "";
       if (quantityInput) quantityInput.value = "";
     });
   });
@@ -293,147 +290,5 @@ document.addEventListener("DOMContentLoaded", function () {
     if (selectedGallery) {
       selectedGallery.style.display = "block";
     }
-  });
-
-  //PDF LIBRERIA
-  const url = "./libreria/agostoLibreriaMayorista.pdf";
-
-  let pdfDoc = null,
-    pageNum = 1,
-    pageRendering = false,
-    pageNumPending = null,
-    scale = 1.0,
-    canvas = document.getElementById("pdf-canvas"),
-    ctx = canvas.getContext("2d");
-
-  pdfjsLib.GlobalWorkerOptions.workerSrc =
-    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.worker.min.js";
-
-  function renderPage(num) {
-    pageRendering = true;
-    pdfDoc.getPage(num).then(function (page) {
-      let viewport = page.getViewport({ scale: scale });
-      canvas.height = viewport.height;
-      canvas.width = viewport.width;
-
-      let renderContext = {
-        canvasContext: ctx,
-        viewport: viewport,
-      };
-      let renderTask = page.render(renderContext);
-
-      renderTask.promise.then(function () {
-        pageRendering = false;
-        if (pageNumPending !== null) {
-          renderPage(pageNumPending);
-          pageNumPending = null;
-        }
-      });
-    });
-
-    document.getElementById("page-num").textContent = num;
-  }
-
-  function queueRenderPage(num) {
-    if (pageRendering) {
-      pageNumPending = num;
-    } else {
-      renderPage(num);
-    }
-  }
-
-  function onPrevPage() {
-    if (pageNum <= 1) {
-      return;
-    }
-    pageNum--;
-    queueRenderPage(pageNum);
-  }
-
-  function onNextPage() {
-    if (pageNum >= pdfDoc.numPages) {
-      return;
-    }
-    pageNum++;
-    queueRenderPage(pageNum);
-  }
-
-  function onZoomIn() {
-    scale += 0.2;
-    queueRenderPage(pageNum);
-  }
-
-  function onZoomOut() {
-    if (scale > 0.4) {
-      scale -= 0.2;
-      queueRenderPage(pageNum);
-    }
-  }
-
-  function findText(page, query) {
-    return page.getTextContent().then(function (textContent) {
-      let matches = [];
-      textContent.items.forEach(function (item) {
-        if (item.str.toLowerCase().includes(query.toLowerCase())) {
-          matches.push(item);
-        }
-      });
-      return matches;
-    });
-  }
-
-  function highlightText(item, page, viewport) {
-    const transform = pdfjsLib.Util.transform(
-      pdfjsLib.Util.transform(viewport.transform, item.transform),
-      [1, 0, 0, -1, 0, page.view[3]]
-    );
-
-    const x = transform[4];
-    const y = transform[5];
-    const width = item.width * transform[0];
-    const height = item.height * transform[3];
-
-    const highlightDiv = document.createElement("div");
-    highlightDiv.style.position = "absolute";
-    highlightDiv.style.left = `${x}px`;
-    highlightDiv.style.top = `${y - height}px`;
-    highlightDiv.style.width = `${width}px`;
-    highlightDiv.style.height = `${height}px`;
-    highlightDiv.style.backgroundColor = "rgba(255, 255, 0, 0.5)";
-    highlightDiv.style.zIndex = 10;
-    highlightDiv.style.pointerEvents = "none";
-    document.querySelector(".pdf-viewer").appendChild(highlightDiv);
-  }
-
-  function clearHighlights() {
-    const highlights = document.querySelectorAll(".pdf-viewer div");
-    highlights.forEach((highlight) => highlight.remove());
-  }
-
-  function onSearch() {
-    clearHighlights();
-    searchIndex = -1;
-    const query = document.getElementById("search-input").value;
-    pdfDoc.getPage(pageNum).then(function (page) {
-      findText(page, query).then(function (matches) {
-        if (matches.length > 0) {
-          searchMatches = matches;
-          searchIndex = 0;
-          highlightText(matches[0], page, page.getViewport({ scale: scale }));
-        }
-      });
-    });
-  }
-
-  document.getElementById("prev-page").addEventListener("click", onPrevPage);
-  document.getElementById("next-page").addEventListener("click", onNextPage);
-  document.getElementById("zoom-in").addEventListener("click", onZoomIn);
-  document.getElementById("zoom-out").addEventListener("click", onZoomOut);
-  document.getElementById("search-btn").addEventListener("click", onSearch);
-
-  pdfjsLib.getDocument(url).promise.then(function (pdfDoc_) {
-    pdfDoc = pdfDoc_;
-    document.getElementById("page-count").textContent = pdfDoc.numPages;
-    renderPage(pageNum);
   });
 });

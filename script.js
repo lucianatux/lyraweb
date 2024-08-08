@@ -47,9 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
       .appendChild(productContainer);
   });
 
-   // CARRUSEL RESPONSIVE
+  // CARRUSEL RESPONSIVE
 
-   if (window.innerWidth <= 868) {
+  if (window.innerWidth <= 868) {
     // Selecciona todos los carruseles que tienen un id que empieza con "carouselFade"
     var carousels = document.querySelectorAll('[id^="carouselFade"]');
 
@@ -87,125 +87,140 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // AGREGAR AL PEDIDO
-document.querySelectorAll(".want-btn").forEach((button) => {
-  button.addEventListener("click", function () {
-    // Limpiar mensaje
-    message.textContent = "";
+  document.querySelectorAll(".want-btn").forEach((button) => {
+    button.addEventListener("click", function () {
+      // Limpiar mensaje
+      message.textContent = "";
 
-    const parentElement = this.parentElement; // Contenedor 'p' que contiene inputs y botón
+      const parentElement = this.parentElement; // Contenedor 'p' que contiene inputs y botón
 
-    // Verificar si el contenedor tiene inputs
-    const colorInput = parentElement.querySelector(".type-product");
-    const quantityInput = parentElement.querySelector(".number-product");
+      // Verificar si el contenedor tiene inputs
+      const colorInput = parentElement.querySelector(".type-product");
+      const quantityInput = parentElement.querySelector(".number-product");
 
-    // Obtener el texto del contenedor actual
-    let productText = parentElement.textContent
-      .replace("Agregar al pedido", "")
-      .trim();
+      // Si existen inputs, verificar si están vacíos
+      if (colorInput && quantityInput) {
+        if (!colorInput.value.trim() || !quantityInput.value.trim()) {
+          alert(
+            "Por favor, completa los campos antes de agregar el producto."
+          );
+          return; // Salir de la función si no están completos
+        }
+      }
 
-    let color = colorInput ? colorInput.value.trim() : "";
-    let quantity = quantityInput ? quantityInput.value.trim() : "";
+      // Obtener el texto del contenedor actual
+      let productText = parentElement.textContent
+        .replace("Agregar al pedido", "")
+        .trim();
 
-    // Formatear el texto del producto
-    const productDetails = color || quantity
-      ? `${productText} ${color ? ` ${color}` : ""}${quantity ? ` ${quantity}` : ""}`
-      : productText;
+      let color = colorInput ? colorInput.value.trim() : "";
+      let quantity = quantityInput ? quantityInput.value.trim() : "";
 
-    console.log("Producto a agregar:", productDetails); // Verifica en la consola si se obtiene el texto correcto
+      // Formatear el texto del producto
+      const productDetails =
+        color || quantity
+          ? `${productText} ${color ? ` ${color}` : ""}${
+              quantity ? ` ${quantity}` : ""
+            }`
+          : productText;
 
-    // Guardar el producto en localStorage
-    let products = JSON.parse(localStorage.getItem("products")) || [];
-    products.push(productDetails);
-    localStorage.setItem("products", JSON.stringify(products));
+      console.log("Producto a agregar:", productDetails); // Verifica en la consola si se obtiene el texto correcto
 
-    // Crear un nuevo input oculto para enviar el nombre del producto
-    const hiddenInput = document.createElement("input");
-    hiddenInput.type = "hidden";
-    hiddenInput.name = "products[]"; // Array de productos
-    hiddenInput.value = productDetails;
-    document.getElementById("order-form").appendChild(hiddenInput);
+      // Guardar el producto en localStorage
+      let products = JSON.parse(localStorage.getItem("products")) || [];
+      products.push(productDetails);
+      localStorage.setItem("products", JSON.stringify(products));
 
-    // Crear un contenedor para el producto seleccionado con botón de eliminación
-    const productContainer = document.createElement("div");
-    productContainer.className = "product-container";
-    productContainer.textContent = productDetails;
+      // Crear un nuevo input oculto para enviar el nombre del producto
+      const hiddenInput = document.createElement("input");
+      hiddenInput.type = "hidden";
+      hiddenInput.name = "products[]"; // Array de productos
+      hiddenInput.value = productDetails;
+      document.getElementById("order-form").appendChild(hiddenInput);
 
-    // Crear un botón de eliminación
-    const removeButton = document.createElement("button");
-    removeButton.textContent = "🗑️";
-    removeButton.className = "remove-btn";
-    removeButton.title = "Eliminar";
-    removeButton.addEventListener("click", function () {
-      // Remover el input oculto correspondiente
-      hiddenInput.remove();
-      // Remover la visualización del producto
-      productContainer.remove();
-      // Actualizar el localStorage
-      let updatedProducts = JSON.parse(localStorage.getItem("products")) || [];
-      updatedProducts = updatedProducts.filter(item => item !== productDetails);
-      localStorage.setItem("products", JSON.stringify(updatedProducts));
+      // Crear un contenedor para el producto seleccionado con botón de eliminación
+      const productContainer = document.createElement("div");
+      productContainer.className = "product-container";
+      productContainer.textContent = productDetails;
+
+      // Crear un botón de eliminación
+      const removeButton = document.createElement("button");
+      removeButton.textContent = "🗑️";
+      removeButton.className = "remove-btn";
+      removeButton.title = "Eliminar";
+      removeButton.addEventListener("click", function () {
+        // Remover el input oculto correspondiente
+        hiddenInput.remove();
+        // Remover la visualización del producto
+        productContainer.remove();
+        // Actualizar el localStorage
+        let updatedProducts =
+          JSON.parse(localStorage.getItem("products")) || [];
+        updatedProducts = updatedProducts.filter(
+          (item) => item !== productDetails
+        );
+        localStorage.setItem("products", JSON.stringify(updatedProducts));
+      });
+
+      // Añadir el botón de eliminación al contenedor del producto
+      productContainer.appendChild(removeButton);
+
+      // Agregar el contenedor del producto al contenedor de todos los productos
+      const allProductsContainer = document.getElementById(
+        "all-products-i-want"
+      );
+      if (!allProductsContainer) {
+        console.error("Error: No se encontró el contenedor de productos.");
+        return;
+      }
+      allProductsContainer.appendChild(productContainer);
+
+      // Justo después de agregar el contenedor del producto al contenedor de todos los productos
+      allProductsContainer.appendChild(productContainer);
+
+      // Mostrar el mensaje "Producto añadido"
+      const addedMessage = document.createElement("p");
+      addedMessage.textContent = "Producto añadido";
+      addedMessage.className = "added-message"; // Clase para aplicar estilo
+      parentElement.appendChild(addedMessage);
+
+      // Opcional: Ocultar el mensaje después de un tiempo
+      setTimeout(() => {
+        addedMessage.remove();
+      }, 2000); // Eliminar el mensaje después de 2 segundos
+
+      // Reiniciar los inputs si existen
+      if (colorInput) colorInput.value = "";
+      if (quantityInput) quantityInput.value = "";
     });
-
-    // Añadir el botón de eliminación al contenedor del producto
-    productContainer.appendChild(removeButton);
-
-    // Agregar el contenedor del producto al contenedor de todos los productos
-    const allProductsContainer = document.getElementById("all-products-i-want");
-    if (!allProductsContainer) {
-      console.error("Error: No se encontró el contenedor de productos.");
-      return;
-    }
-    allProductsContainer.appendChild(productContainer);
-
-    // Justo después de agregar el contenedor del producto al contenedor de todos los productos
-allProductsContainer.appendChild(productContainer);
-
-// Mostrar el mensaje "Producto añadido"
-const addedMessage = document.createElement("p");
-addedMessage.textContent = "Producto añadido";
-addedMessage.className = "added-message"; // Clase para aplicar estilo
-parentElement.appendChild(addedMessage);
-
-// Opcional: Ocultar el mensaje después de un tiempo
-setTimeout(() => {
-  addedMessage.remove();
-}, 2000); // Eliminar el mensaje después de 2 segundos
-
-
-    // Reiniciar los inputs si existen
-    if (colorInput) colorInput.value = "";
-    if (quantityInput) quantityInput.value = "";
   });
-});
 
-
-// VER PEDIDO
-if (!orderButton || !productList || !allProducts || !message) {
-  console.error(
-    "Error: Could not find one or more elements with specified IDs"
-  );
-  return;
-}
-
-orderButton.addEventListener("click", function () {
-  // Toggle the display of the order list
-  const isVisible = productList.style.display === "block";
-  productList.style.display = isVisible ? "none" : "block";
-
-  // Modificar el HTML del botón dependiendo del estado
-  const orderButtonText = document.getElementById("order-btn-text");
-  orderButtonText.innerHTML = isVisible
-    ? '<span class="fs-4">📝</span> Mi pedido' // HTML cuando la lista está oculta
-    : '<span class="fs-5">📝</span> Ocultar pedido'; // HTML cuando la lista está visible
-
-  // Check if the all-products-i-want div is empty
-  if (allProducts.children.length === 0) {
-    message.textContent = "Aún no has seleccionado ningún artículo";
-  } else {
-    message.textContent = "";
+  // VER PEDIDO
+  if (!orderButton || !productList || !allProducts || !message) {
+    console.error(
+      "Error: Could not find one or more elements with specified IDs"
+    );
+    return;
   }
-});
 
+  orderButton.addEventListener("click", function () {
+    // Toggle the display of the order list
+    const isVisible = productList.style.display === "block";
+    productList.style.display = isVisible ? "none" : "block";
+
+    // Modificar el HTML del botón dependiendo del estado
+    const orderButtonText = document.getElementById("order-btn-text");
+    orderButtonText.innerHTML = isVisible
+      ? '<span class="fs-4">📝</span> Mi pedido' // HTML cuando la lista está oculta
+      : '<span class="fs-5">📝</span> Ocultar pedido'; // HTML cuando la lista está visible
+
+    // Check if the all-products-i-want div is empty
+    if (allProducts.children.length === 0) {
+      message.textContent = "Aún no has seleccionado ningún artículo";
+    } else {
+      message.textContent = "";
+    }
+  });
 
   // BRISEIDA JS
   const briseida = document.getElementById("briseida");
@@ -253,7 +268,6 @@ orderButton.addEventListener("click", function () {
     .addEventListener("submit", function () {
       this.reset(); // Reinicia los campos del formulario
     });
-
 
   //CARRUSEL CARTERAS Y AFINES CON SELECT
   const select = document.getElementById("carteras-select");

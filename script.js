@@ -157,6 +157,21 @@ document.querySelectorAll(".want-btn").forEach((button) => {
     }
     allProductsContainer.appendChild(productContainer);
 
+    // Justo después de agregar el contenedor del producto al contenedor de todos los productos
+allProductsContainer.appendChild(productContainer);
+
+// Mostrar el mensaje "Producto añadido"
+const addedMessage = document.createElement("p");
+addedMessage.textContent = "Producto añadido";
+addedMessage.className = "added-message"; // Clase para aplicar estilo
+parentElement.appendChild(addedMessage);
+
+// Opcional: Ocultar el mensaje después de un tiempo
+setTimeout(() => {
+  addedMessage.remove();
+}, 2000); // Eliminar el mensaje después de 2 segundos
+
+
     // Reiniciar los inputs si existen
     if (colorInput) colorInput.value = "";
     if (quantityInput) quantityInput.value = "";

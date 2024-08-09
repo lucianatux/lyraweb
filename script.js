@@ -4,39 +4,48 @@ document.addEventListener("DOMContentLoaded", function () {
   const productList = document.getElementById("my-order");
   const allProducts = document.getElementById("all-products-i-want");
   const message = document.getElementById("message-order-list");
-  const menuItems = document.querySelectorAll('.item-menu');
-  const sections = document.querySelectorAll('section'); 
+  const menuItems = document.querySelectorAll(".item-menu");
+  const sections = document.querySelectorAll("section");
 
+  // ACCESO DIRECTO SIN SCROLL A LAS SECCIONES DEL MENU
+document.querySelectorAll("#menu a").forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault(); // Prevent the default anchor click behavior
 
-  //ACCESO DIRECTO SIN SCROLL A LAS SECCIONES DEL MENU
-  document.querySelectorAll("#menu a").forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault(); // Prevent the default anchor click behavior
+    const targetId = this.getAttribute("href").substring(1); // Get the target section id
+    const targetSection = document.getElementById(targetId); // Get the target section element
 
-      const targetId = this.getAttribute("href").substring(1); // Get the target section id
-      const targetSection = document.getElementById(targetId); // Get the target section element
-
+    if (targetSection) {
       targetSection.scrollIntoView({ behavior: "instant" }); // Instantly scroll to the target section
-    });
+    } else {
+      // Si targetSection es null, permitimos que el enlace se comporte normalmente
+      window.location.href = this.getAttribute("href");
+    }
   });
+});
+
 
   //ELEMENTO DEL MENU DESTACADO CUANDO LA SECCION ESTÁ ACTIVA
-  // Crea un observer con Intersection Observer API
+  // un observer con Intersection Observer API
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     const id = entry.target.getAttribute('id');
     const menuItem = document.querySelector(`a[href="#${id}"]`);
 
     if (entry.isIntersecting) {
+      // Elimina la clase 'active' de todos los items de menú
+      menuItems.forEach(item => {
+        item.classList.remove('active');
+        item.classList.remove('hover'); // Si tienes una clase específica para el hover, la puedes remover aquí
+      });
+
+      // Añade la clase 'active' solo al elemento correspondiente
       menuItem.classList.add('active');
-    } else {
-      menuItem.classList.remove('active');
     }
   });
 }, {
   threshold: 0.5 // El 50% de la sección debe estar visible para activarlo
 });
-
 // Observa cada sección
 sections.forEach(section => {
   observer.observe(section);
@@ -130,15 +139,13 @@ sections.forEach(section => {
         }
       }
 
-      
-
       // Obtener el texto del contenedor actual
       let productText = parentElement.textContent
         .replace("Agregar al pedido", "")
         .trim();
 
       let color = "";
-    
+
       // Si el detailProduct es un select, obtener solo el valor seleccionado
       if (detailProduct && detailProduct.tagName === "SELECT") {
         color = detailProduct.options[detailProduct.selectedIndex].text;
@@ -295,12 +302,12 @@ sections.forEach(section => {
   });
 
   //FORMULARIO - REINICIO DE CAMPOS
-
+/*
   document
     .getElementById("formulario-contacto")
     .addEventListener("submit", function () {
       this.reset(); // Reinicia los campos del formulario
-    });
+    });*/
 
   //CARRUSEL CARTERAS Y AFINES CON SELECT
   const select = document.getElementById("carteras-select");

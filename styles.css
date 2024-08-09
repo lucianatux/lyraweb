@@ -9,7 +9,9 @@
   --third-color: #068899;
   --fourth-color: #125e60;
   --fifth-color: #3d444c;
-  --sixth-color: #e6736f;
+  --sixth-color: #e66f9b;
+  --seventh-color: #56606b8f;
+
 }
 
 /************ Default Css ************/
@@ -82,7 +84,6 @@ a {
   color: var(--first-color);
 }
 
-
 .rubro-icon {
   width: 30px;
 }
@@ -94,7 +95,7 @@ a {
   display: block;
   margin: 0 0 10px;
 }
-.rubro-title-small{
+.rubro-title-small {
   display: none;
 }
 
@@ -133,9 +134,9 @@ a {
 }
 .logo {
   width: 80px;
- margin-right: 5px;
+  margin-right: 5px;
 }
-.line{
+.line {
   width: 100%;
   height: 10px;
   background-color: var(--fifth-color);
@@ -184,7 +185,7 @@ a {
 }
 
 /*****************ORDER*****************/
-#order{
+#order {
   background: var(--third-color);
   color: var(--first-color);
   padding: 10px;
@@ -193,10 +194,10 @@ a {
   cursor: pointer;
   font-size: 14px;
 }
-#order:hover{
+#order:hover {
   box-shadow: 2px 2px 4px var(--first-color);
 }
-#my-order{
+#my-order {
   width: 70%;
   height: auto;
   padding: 50px;
@@ -210,32 +211,31 @@ a {
   border-radius: 20px;
   z-index: 3;
 }
-#order-btn-text{
+#order-btn-text {
   margin: 0px;
 }
-.remove-btn{
+.remove-btn {
   border: 1px solid lightgrey;
   border-radius: 5px;
   padding: 5px;
 }
-#all-products-i-want{
+#all-products-i-want {
   background: var(--third-color);
 }
-.product-container{
+.product-container {
   background: var(--first-color);
   border: 1px solid lightgrey;
   border-radius: 10px;
   margin: 5px 0;
   padding: 10px;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
 }
-input{
+input {
   margin: 5px 0 !important;
   padding: 5px !important;
   border-radius: 5px !important;
 }
-
 
 /*****************SEARCH*****************/
 
@@ -277,12 +277,12 @@ input{
   justify-content: center;
   align-items: center;
 }
-#lottie-info{
+#lottie-info {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.lottie-div{
+.lottie-div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -294,11 +294,16 @@ input{
 form {
   text-align: left;
 }
-.form-elem{
+.form-elem {
   padding: 10px 0;
 }
 #send-button {
-  background-image: linear-gradient(to right, #e0e0e0 0%, #b0b0b0 50%, #e0e0e0 100%); /* Degradado lineal de gris claro a gris oscuro */
+  background-image: linear-gradient(
+    to right,
+    #e0e0e0 0%,
+    #b0b0b0 50%,
+    #e0e0e0 100%
+  ); /* Degradado lineal de gris claro a gris oscuro */
   border: 1px solid #ccc; /* Borde plateado de 1px */
   box-shadow: 2px 2px 5px var(--second-color);
   text-shadow: 0px 0px 10px var(--second-color);
@@ -315,72 +320,79 @@ form {
 }
 .img-and-text {
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  text-align: center; 
+  text-align: center;
   background: #ffffffcc;
   border-radius: 10px;
   padding: 10px;
   margin: 3px;
 }
 .img-and-text img {
-  max-width: 340px;
-  padding: 0 20px;
+  max-width: 360px;
+  padding: 0 10px;
 }
 .img-and-text p {
-  width: 280px;
-  height: 180px;
+  width: 360px;
+  height: 140px;
   padding: 10px;
   position: relative;
-  font-size: 15px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  align-items: center;
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.5
-  );
-  border-radius: 50%; 
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
   width: 50px;
   height: 50px;
 }
-.carousel-control-next, .carousel-control-prev {
+.carousel-control-next,
+.carousel-control-prev {
   height: 200px !important;
   top: 250px !important;
 }
 
-
 /*****************agregar pedido CAROUSEL*****************/
-
-.product-text{
-  height: 200px !important;
+.info-product{
+height: 100px !important;
 }
-.product-input{
+.info-product-small{
+  height: 60px !important;
+}
+.product-input {
   height: 180px !important;
 }
-.want-btn{
+.want-btn {
+  width: 150px;
+  margin: 5px auto;
   padding: 5px;
   border-radius: 10px;
   background: var(--first-color);
   box-shadow: 1px 1px 4px var(--second-color);
-  position: absolute; 
-  left: 20%;
-  bottom: 0px;
 }
-.want-btn:hover{
+.want-btn:hover {
   color: var(--first-color);
   background: var(--third-color);
 }
-
-.text-cart{
-  text-align: center;
-  height: 130px !important;
+.type-product {
+  width: 150px;
+  margin: 5px auto;
+  padding: 5px;
+  border-radius: 10px;
 }
-.added-message{
+.number-product {
+  width: 150px;
+  margin: 5px auto;
+  padding: 5px;
+  border-radius: 10px;
+}
+.added-message {
   background: var(--sixth-color);
   color: var(--first-color);
   height: 40px !important;
@@ -388,13 +400,11 @@ form {
   font-weight: 600;
 }
 
-
-
 /*****************SECTIONS*****************/
-.menu-section{
+.menu-section {
   margin: 20px;
 }
-.extra-div{
+.extra-div {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -402,38 +412,52 @@ form {
   text-align: center;
   margin-bottom: 30px;
 }
-.carta-img-div{
- display: flex;
- justify-content: center;
- align-items: center;
+.carta-img-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.carta-img-div img{
- width: 250px;
-} 
-.download-btn{
+.carta-img-div img {
+  width: 250px;
+}
+.download-btn {
   border: 2px solid lightgrey;
   border-radius: 5px;
   padding: 5px;
   margin: 5px;
   box-shadow: 2px 2px 3px var(--second-color);
 }
-.download-btn:hover{
+.download-btn:hover {
   border: 2px solid var(--third-color);
 }
-.icon-img{
+.icon-img {
   width: 30px;
 }
-#carteras-select{
+#carteras-select {
   padding: 5px;
   border-radius: 10px;
   cursor: pointer;
 }
-#carteras-select:hover{
+#carteras-select:hover {
   box-shadow: 0px 0px 6px var(--third-color);
 }
-
-
-
+.crazy-title{
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--first-color);
+  background: var(--seventh-color);
+  border-radius: 10px;
+  padding: 10px;
+}
+.pdf-viewer {
+  width: 100%;
+  overflow: hidden;
+}
+.pdf-viewer iframe {
+  width: 100%;
+  height: 300px; 
+  border: none; 
+}
 
 /*****************FOOTER*****************/
 
@@ -464,38 +488,44 @@ footer p {
 }
 
 /*****************RESPONSIVE*****************/
+@media (max-width: 968px) and (min-width: 869px) {
+  .img-and-text p {
+    width: 260px;
+    height: 160px;
+    font-size: 15px;
+  }
+}
 
 @media (max-width: 868px) and (min-width: 569px) {
-  .lyra{
+  .lyra {
     font-size: 24px;
   }
-  #mayorista{
+  #mayorista {
     font-size: 14px;
   }
-  #order{
+  #order {
     font-size: 12px;
     padding: 5px;
   }
-  #logo{
+  #logo {
     width: 70px;
   }
-  .collage, .mirror {
+  .collage,
+  .mirror {
     width: 50%;
   }
   .collage2,
   .mirror2 {
     display: none;
   }
-  .img-and-text img {
-    max-width: 300px;
-    padding: 0 10px;
+
+  .img-and-text p {
+    width: 360px;
+    height: 140px;
+    font-size: 15px;
   }
-  .img-and-text p{
-    width: 250px;
-    height: 180px;
-    font-size: 16px;
-  }
-  #my-order{
+
+  #my-order {
     width: calc(100% - 80px);
     height: auto;
     padding: 20px;
@@ -506,10 +536,10 @@ footer p {
 }
 
 @media (max-width: 568px) {
-  .menu-section{
+  .menu-section {
     margin: 0px;
   }
-  .lyra{
+  .lyra {
     font-size: 22px;
   }
   .div-lyra {
@@ -520,15 +550,15 @@ footer p {
     width: 50px;
     margin: 5px;
   }
-  #mayorista{
+  #mayorista {
     display: none;
   }
-  #order{
+  #order {
     font-size: 10px;
     padding: 5px;
-margin-left: 10px;    
+    margin-left: 10px;
   }
-  #my-order{
+  #my-order {
     width: calc(100% - 80px);
     height: auto;
     padding: 20px;
@@ -539,7 +569,8 @@ margin-left: 10px;
   .collage {
     width: 100%;
   }
-  .mirror, .collage2,
+  .mirror,
+  .collage2,
   .mirror2 {
     display: none;
   }
@@ -547,21 +578,21 @@ margin-left: 10px;
     max-width: 280px;
     padding: 10px 0;
   }
-  .img-and-text p{
-    width: 200px;
-    height: 180px;
+  .img-and-text p {
+    width: 260px;
+    height: 160px;
     font-size: 14px;
   }
-  .carta-img-div{
+  .carta-img-div {
     flex-direction: column;
   }
-  .download-btn{
-   font-size: 10px;
+  .download-btn {
+    font-size: 10px;
   }
-  .icon-img{
+  .icon-img {
     width: 20px;
   }
-  footer{
+  footer {
     padding: 10px;
   }
   .footer-div {
@@ -582,7 +613,7 @@ margin-left: 10px;
   .rubro-title {
     display: none;
   }
-  .rubro-title-small{
+  .rubro-title-small {
     display: block;
     font-size: 11px;
     margin: 5px;
@@ -612,8 +643,7 @@ margin-left: 10px;
     padding: 10px;
     margin: 5px;
   }
-  #titulo-formulario{
+  #titulo-formulario {
     flex-direction: column;
   }
 }
-

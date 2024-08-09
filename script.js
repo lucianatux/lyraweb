@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const productList = document.getElementById("my-order");
   const allProducts = document.getElementById("all-products-i-want");
   const message = document.getElementById("message-order-list");
+  const menuItems = document.querySelectorAll('.item-menu');
+  const sections = document.querySelectorAll('section'); 
+
 
   //ACCESO DIRECTO SIN SCROLL A LAS SECCIONES DEL MENU
   document.querySelectorAll("#menu a").forEach((anchor) => {
@@ -16,6 +19,28 @@ document.addEventListener("DOMContentLoaded", function () {
       targetSection.scrollIntoView({ behavior: "instant" }); // Instantly scroll to the target section
     });
   });
+
+  //ELEMENTO DEL MENU DESTACADO CUANDO LA SECCION ESTÁ ACTIVA
+  // Crea un observer con Intersection Observer API
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const id = entry.target.getAttribute('id');
+    const menuItem = document.querySelector(`a[href="#${id}"]`);
+
+    if (entry.isIntersecting) {
+      menuItem.classList.add('active');
+    } else {
+      menuItem.classList.remove('active');
+    }
+  });
+}, {
+  threshold: 0.5 // El 50% de la sección debe estar visible para activarlo
+});
+
+// Observa cada sección
+sections.forEach(section => {
+  observer.observe(section);
+});
 
   //LISTA DE "MI PEDIDO"
   storedProducts.forEach((productText) => {
@@ -94,23 +119,34 @@ document.addEventListener("DOMContentLoaded", function () {
       const parentElement = this.parentElement; // Contenedor 'p' que contiene inputs y botón
 
       // Verificar si el contenedor tiene inputs
-      const typeInput = parentElement.querySelector(".type-product");
+      const detailProduct = parentElement.querySelector(".type-product");
       const quantityInput = parentElement.querySelector(".number-product");
 
       // Si existen inputs, verificar si están vacíos
-      if (typeInput && quantityInput) {
-        if (!typeInput.value.trim() || !quantityInput.value.trim()) {
+      if (detailProduct && quantityInput) {
+        if (!detailProduct.value.trim() || !quantityInput.value.trim()) {
           alert("Por favor, completa los campos antes de agregar el producto.");
           return; // Salir de la función si no están completos
         }
       }
+
+      
 
       // Obtener el texto del contenedor actual
       let productText = parentElement.textContent
         .replace("Agregar al pedido", "")
         .trim();
 
-      let color = typeInput ? typeInput.value.trim() : "";
+      let color = "";
+    
+      // Si el detailProduct es un select, obtener solo el valor seleccionado
+      if (detailProduct && detailProduct.tagName === "SELECT") {
+        color = detailProduct.options[detailProduct.selectedIndex].text;
+      } else if (detailProduct) {
+        // Si no es un select, obtener el valor del input normalmente
+        color = detailProduct.value.trim();
+      }
+
       let quantity = quantityInput ? quantityInput.value.trim() : "";
 
       // Formatear el texto del producto
@@ -184,10 +220,10 @@ document.addEventListener("DOMContentLoaded", function () {
       // Opcional: Ocultar el mensaje después de un tiempo
       setTimeout(() => {
         addedMessage.remove();
-      }, 2000); // Eliminar el mensaje después de 2 segundos
+      }, 1500);
 
       // Reiniciar los inputs si existen
-      if (typeInput) typeInput.value = "";
+      if (detailProduct) detailProduct.value = "";
       if (quantityInput) quantityInput.value = "";
     });
   });

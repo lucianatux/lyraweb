@@ -75,6 +75,13 @@ a {
   font-size: 16px;
   color: var(--first-color);
 }
+.item-menu.active {
+  text-shadow: 1px 1px 5px var(--second-color);
+  background-color: var(--fourth-color);
+  font-size: 16px;
+  color: var(--first-color);
+}
+
 
 .rubro-icon {
   width: 30px;
@@ -322,8 +329,8 @@ form {
   padding: 0 20px;
 }
 .img-and-text p {
-  width: 200px;
-  height: 120px;
+  width: 280px;
+  height: 180px;
   padding: 10px;
   position: relative;
   font-size: 15px;
@@ -485,6 +492,7 @@ footer p {
   }
   .img-and-text p{
     width: 250px;
+    height: 180px;
     font-size: 16px;
   }
   #my-order{
@@ -541,6 +549,7 @@ margin-left: 10px;
   }
   .img-and-text p{
     width: 200px;
+    height: 180px;
     font-size: 14px;
   }
   .carta-img-div{

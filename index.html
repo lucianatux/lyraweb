@@ -259,11 +259,11 @@
                   <img src="./libreria/colorescartulinas.jpg" alt="..." />
                   <p class="info-product">
                     CARTULINAS<br />
-                    Blanca $357 Color $504 Flúor $915 Mínimo 5 unidades por
-                    color</p>
-                    <p class="product-input">Cartulinas
+                    Blanca $357 Color $504 Flúor $915<br/> Mínimo 5 unidades por
+                    color<br/>Medidas: 45x64cm</p>
+                    <p class="product-input">Cartulinas<br/>
                       <input type="text" class="type-product" name="type-product" placeholder="color" required>
-                      <input type="number" class="number-product" name="number-product" placeholder="cantidad" required>
+                      <input type="number" class="number-product" name="number-product" placeholder="cantidad" step="5" min="5" required>
                       <button class="want-btn">Agregar al pedido</button>
                     </p>
                 
@@ -274,9 +274,9 @@
                     Goma eva $649<br />
                     Goma eva con brillo $1278
                   </p>
-                  <p class="product-input">Goma eva
+                  <p class="product-input">Goma eva<br/>
                     <input type="text" class="type-product" name="type-product" placeholder="color" required>
-                    <input type="number" class="number-product" name="number-product" placeholder="cantidad" required>
+                    <input type="number" class="number-product" name="number-product" placeholder="cantidad" step="2" min="2" required>
                     <button class="want-btn">Agregar al pedido</button>
                   </p>
                 </div>
@@ -291,9 +291,9 @@
                     Blanco $585 Color $828<br />
                     Mínimo 10 unidades por color
                   </p>
-                  <p class="product-input">Papel afiche
+                  <p class="product-input">Papel afiche<br/>
                     <input type="text" class="type-product" name="type-product" placeholder="color" required>
-                    <input type="number" class="number-product" name="number-product" placeholder="cantidad" required>
+                    <input type="number" class="number-product" name="number-product" placeholder="cantidad" step="10" min="10" required>
                     <button class="want-btn">Agregar al pedido</button>
                   </p>
                 </div>
@@ -303,9 +303,9 @@
                     Papel crepé $387<br />
                     Mínimo 10 unidades por color
                   </p>
-                  <p class="product-input">Papel crepé
+                  <p class="product-input">Papel crepé<br/>
                     <input type="text" class="type-product" name="type-product" placeholder="color" required>
-                    <input type="number" class="number-product" name="number-product" placeholder="cantidad" required>
+                    <input type="number" class="number-product" name="number-product" placeholder="cantidad" step="10" min="10" required>
                     <button class="want-btn">Agregar al pedido</button>
                   </p>
                 </div>
@@ -316,13 +316,26 @@
                 <div class="img-and-text first">
                   <img src="./libreria/papelderegalo.jpg" alt="..." />
                   <p class="info-product">
-                    Papel de regalo<br />
-                    $772<br />
-                    Mínimo 5 unidades por diseño
+                    Papel de regalo $772<br />
+                    Medidas: 70cm x 100cm <br/>ilustración 90gr<br />
+                    Mínimo 5 unidades por diseño<br/>
+                    pinceladas, love, unicornios, corazones, trama multicolor, corbatas, mandalas, juguetes, llamas, aviones 
                   </p>
-                  <p class="product-input">Papel de regalo
-                    <input type="text" class="type-product" name="type-product" placeholder="diseño" required>
-                    <input type="number" class="number-product" name="number-product" placeholder="cantidad" required>
+                  <p class="product-input">Papel de regalo<br/>
+                    <select class="type-product" name="type-product" required>
+                      <option value="" ></option>
+                      <option value="pinceladas">pinceladas</option>
+                      <option value="love">love</option>
+                      <option value="unicornios">unicornios</option>
+                      <option value="corazones">corazones</option>   
+                      <option value="trama">trama multicolor</option>
+                      <option value="corbatas">corbatas</option>
+                      <option value="mandalas">mandalas</option>
+                      <option value="juguetes">juguetes</option>  
+                      <option value="llamas">llamas</option>
+                      <option value="aviones">aviones</option>
+                    </select>
+                    <input type="number" class="number-product" name="number-product" placeholder="cantidad" step="5" min="5" required>
                     <button class="want-btn">Agregar al pedido</button>
                   </p>
                 </div>
@@ -336,7 +349,7 @@
                   </p>
                   <p class="product-input">Sobres de colores
                     <input type="text" class="type-product" name="type-product" placeholder="tamaño y color" required>
-                    <input type="number" class="number-product" name="number-product" placeholder="cantidad" required>
+                    <input type="number" class="number-product" name="number-product" placeholder="cantidad" step="5" min="5" required>
                     <button class="want-btn">Agregar al pedido</button>
                   </p>
                 </div>
@@ -406,8 +419,7 @@
                   <img src="./hebillas/vinchasinfantiles.jpg" alt="..." />
                   <p class="info-product">
                     Vinchas infantiles<br />
-                    $16500 las 10 unidades surtidas<br />
-                    ($1650 c/u)
+                    $16500 las 10 unidades surtidas ($1650 c/u)
                     <button class="want-btn">Agregar al pedido</button>
                   </p>
                 </div>
@@ -503,7 +515,7 @@
                   </p>
                   <p class="product-input">Tinturas kit
                     <input type="text" class="type-product" name="type-product" placeholder="tono" required>
-                    <input type="number" class="number-product" name="number-product" placeholder="cantidad" required>
+                    <input type="number" class="number-product" name="number-product" placeholder="cantidad" step="2" min="2" required>
                     <button class="want-btn">Agregar al pedido</button>
                   </p>
                 </div>
@@ -557,9 +569,8 @@
                 <div class="img-and-text first">
                   <img src="./tinturas/shock.jpg" alt="..." />
                   <p class="info-product">
-                    Shock capilar <br />
-                    $1160<br />
-                    Tratamientos intensivos
+                    Shock capilar $1160<br />
+                    Tratamientos intensivos 47gr: Argán, keratina, macadamia, coco, bótox, colágeno, blindaje, minuto express, rubios luminosos, carbón detox, oro 24k, silver y co-wash
                   </p>
                   <p class="product-input">Shock capilar
                     <input type="text" class="type-product" name="type-product" placeholder="tratamiento" required>

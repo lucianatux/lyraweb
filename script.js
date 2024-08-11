@@ -8,48 +8,49 @@ document.addEventListener("DOMContentLoaded", function () {
   const sections = document.querySelectorAll("section");
 
   // ACCESO DIRECTO SIN SCROLL A LAS SECCIONES DEL MENU
-document.querySelectorAll("#menu a").forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault(); // Prevent the default anchor click behavior
+  document.querySelectorAll("#menu a").forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault(); // Prevent the default anchor click behavior
 
-    const targetId = this.getAttribute("href").substring(1); // Get the target section id
-    const targetSection = document.getElementById(targetId); // Get the target section element
+      const targetId = this.getAttribute("href").substring(1); // Get the target section id
+      const targetSection = document.getElementById(targetId); // Get the target section element
 
-    if (targetSection) {
-      targetSection.scrollIntoView({ behavior: "instant" }); // Instantly scroll to the target section
-    } else {
-      // Si targetSection es null, permitimos que el enlace se comporte normalmente
-      window.location.href = this.getAttribute("href");
-    }
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: "instant" }); // Instantly scroll to the target section
+      } else {
+        // Si targetSection es null, permitimos que el enlace se comporte normalmente
+        window.location.href = this.getAttribute("href");
+      }
+    });
   });
-});
-
 
   //ELEMENTO DEL MENU DESTACADO CUANDO LA SECCION ESTÁ ACTIVA
   // un observer con Intersection Observer API
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    const id = entry.target.getAttribute('id');
-    const menuItem = document.querySelector(`a[href="#${id}"]`);
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.getAttribute("id");
+        const menuItem = document.querySelector(`a[href="#${id}"]`);
 
-    if (entry.isIntersecting) {
-      // Elimina la clase 'active' de todos los items de menú
-      menuItems.forEach(item => {
-        item.classList.remove('active');
-        item.classList.remove('hover'); // Si tienes una clase específica para el hover, la puedes remover aquí
+        if (entry.isIntersecting && menuItem) {
+          // Elimina la clase 'active' de todos los items de menú
+          menuItems.forEach((item) => {
+            item.classList.remove("active");
+            item.classList.remove("hover"); // Si tienes una clase específica para el hover, la puedes remover aquí
+          });
+          // Añade la clase 'active' solo al elemento correspondiente
+          menuItem.classList.add("active");
+        }
       });
-
-      // Añade la clase 'active' solo al elemento correspondiente
-      menuItem.classList.add('active');
+    },
+    {
+      threshold: 0.5, // El 50% de la sección debe estar visible para activarlo
     }
+  );
+  // Observa cada sección
+  sections.forEach((section) => {
+    observer.observe(section);
   });
-}, {
-  threshold: 0.5 // El 50% de la sección debe estar visible para activarlo
-});
-// Observa cada sección
-sections.forEach(section => {
-  observer.observe(section);
-});
 
   //LISTA DE "MI PEDIDO"
   storedProducts.forEach((productText) => {
@@ -84,25 +85,25 @@ sections.forEach(section => {
   // CARRUSEL RESPONSIVE
   if (window.innerWidth <= 868) {
     // Selecciona todos los carruseles que tienen un id que empieza con "carouselFade"
-    var carousels = document.querySelectorAll('[id^="carouselFade"]');
+    const carousels = document.querySelectorAll('[id^="carouselFade"]');
 
     carousels.forEach(function (carousel) {
-      var carouselInner = carousel.querySelector(".carousel-inner");
-      var slides = carousel.querySelectorAll(".carousel-item");
+      const carouselInner = carousel.querySelector(".carousel-inner");
+      const slides = carousel.querySelectorAll(".carousel-item");
 
       slides.forEach(function (slide) {
-        var secondImgAndText = slide.querySelector(".img-and-text.second");
+        const secondImgAndText = slide.querySelector(".img-and-text.second");
         if (secondImgAndText) {
           // Crear una nueva slide
-          var newSlide = document.createElement("div");
+          let newSlide = document.createElement("div");
           newSlide.classList.add("carousel-item");
 
           // Crear un nuevo contenedor para la imagen y descripción
-          var newSlides = document.createElement("div");
+          let newSlides = document.createElement("div");
           newSlides.classList.add("slides");
 
           // Clonar el segundo conjunto de imagen y descripción
-          var clonedSecondImgAndText = secondImgAndText.cloneNode(true);
+          let clonedSecondImgAndText = secondImgAndText.cloneNode(true);
           clonedSecondImgAndText.classList.remove("second");
           clonedSecondImgAndText.classList.add("first");
 
@@ -301,14 +302,6 @@ sections.forEach(section => {
     }
   });
 
-  //FORMULARIO - REINICIO DE CAMPOS
-/*
-  document
-    .getElementById("formulario-contacto")
-    .addEventListener("submit", function () {
-      this.reset(); // Reinicia los campos del formulario
-    });*/
-
   //CARRUSEL CARTERAS Y AFINES CON SELECT
   const select = document.getElementById("carteras-select");
   const galcarteras = document.getElementById("carouselFade5");
@@ -329,7 +322,7 @@ sections.forEach(section => {
     galaccesorios.style.display = "none";
 
     // Mostrar la galería seleccionada
-    var selectedGallery = document.getElementById(this.value);
+    let selectedGallery = document.getElementById(this.value);
     if (selectedGallery) {
       selectedGallery.style.display = "block";
     }

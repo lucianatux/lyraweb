@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   //ELEMENTO DEL MENU DESTACADO CUANDO LA SECCION ESTÁ ACTIVA
-  // un observer con Intersection Observer API
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -33,21 +32,18 @@ document.addEventListener("DOMContentLoaded", function () {
         const menuItem = document.querySelector(`a[href="#${id}"]`);
 
         if (entry.isIntersecting && menuItem) {
-          // Elimina la clase 'active' de todos los items de menú
           menuItems.forEach((item) => {
             item.classList.remove("active");
-            item.classList.remove("hover"); // Si tienes una clase específica para el hover, la puedes remover aquí
+            item.classList.remove("hover"); 
           });
-          // Añade la clase 'active' solo al elemento correspondiente
           menuItem.classList.add("active");
         }
       });
     },
     {
-      threshold: 0.5, // El 50% de la sección debe estar visible para activarlo
+      threshold: 0.5,
     }
   );
-  // Observa cada sección
   sections.forEach((section) => {
     observer.observe(section);
   });
@@ -126,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Limpiar mensaje
       message.textContent = "";
 
-      const parentElement = this.parentElement; // Contenedor 'p' que contiene inputs y botón
+      const parentElement = this.parentElement; 
 
       // Verificar si el contenedor tiene inputs
       const detailProduct = parentElement.querySelector(".type-product");
@@ -140,27 +136,48 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
 
-      // Obtener el texto del contenedor actual
-      let productText = parentElement.textContent
-        .replace("Agregar al pedido", "")
-        .trim();
+      let productText = "";
+      const selectElement = parentElement.querySelector("select");
+  
+      if (selectElement) {
+        // Si hay un select, obtener solo el texto fuera de select e inputs
+        productText = Array.from(parentElement.childNodes)
+          .filter(
+            (node) =>
+              node.nodeType === Node.TEXT_NODE ||
+              (node.nodeType === Node.ELEMENT_NODE &&
+                node.tagName !== "SELECT" &&
+                node.tagName !== "INPUT" &&
+                node.tagName !== "BUTTON")
+          )
+          .map((node) => node.textContent.trim())
+          .join(" ")
+          .replace("Agregar al pedido", "")
+          .trim();
+      } else {
+        // Si no hay select, obtener todo el texto del contenedor como antes
+        productText = parentElement.textContent
+          .replace("Agregar al pedido", "")
+          .trim();
+      }
+  
 
-      let color = "";
+      let detail = "";
 
       // Si el detailProduct es un select, obtener solo el valor seleccionado
       if (detailProduct && detailProduct.tagName === "SELECT") {
-        color = detailProduct.options[detailProduct.selectedIndex].text;
+        detail = detailProduct.options[detailProduct.selectedIndex].text;
       } else if (detailProduct) {
         // Si no es un select, obtener el valor del input normalmente
-        color = detailProduct.value.trim();
+        detail = detailProduct.value.trim();
       }
 
       let quantity = quantityInput ? quantityInput.value.trim() : "";
 
       // Formatear el texto del producto
       const productDetails =
-        color || quantity
-          ? `${productText}${color ? ` ${color}` : ""}${
+        detail || quantity
+          ? `${productText}${detail ? ` ${detail}` : ""}${
               quantity ? ` cantidad: ${quantity}` : ""
             }`
           : productText;

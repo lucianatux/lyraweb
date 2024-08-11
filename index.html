@@ -356,6 +356,8 @@
                       <option value="juguetes">juguetes</option>  
                       <option value="llamas">llamas</option>
                       <option value="aviones">aviones</option>
+                      <option value="surtido">surtido</option>
+
                     </select>
                     <input type="number" class="number-product" name="number-product" placeholder="cantidad" step="5" min="5" required>
                     <button class="want-btn">Agregar al pedido</button>
@@ -365,12 +367,19 @@
                   <img src="./libreria/sobres.jpeg" alt="..." />
                   <p class="info-product">
                     Sobres de colores<br />
-                    Chico $78<br />
-                    Mediano $115<br />
-                    Grande $127
+                    Chico $78 | 7,5cm X 10,5cm<br />
+                    Mediano $115 | 11,4cm X 16,2cm<br />
+                    Grande $127 | 12,5cm X 19cm
                   </p>
-                  <p class="product-input">Sobres de colores
-                    <input type="text" class="type-product" name="type-product" placeholder="tamaño y color" required>
+                  <p class="product-input">Sobres de colores<br/>
+                    <select class="type-product" name="type-product" required>
+                      <option value="" ></option>
+                      <option value="chico">chico</option>
+                      <option value="mediano">mediano</option>
+                      <option value="grande">grande</option>
+                      <option value="surtido">surtido</option>
+
+                    </select>
                     <input type="number" class="number-product" name="number-product" placeholder="cantidad" step="5" min="5" required>
                     <button class="want-btn">Agregar al pedido</button>
                   </p>
@@ -386,7 +395,15 @@
                     14cmx20cm $337 | 22cmx30cm $389 | 30cmx41cm $515 | 14cmx40cm $395
                   </p>
                   <p class="product-input">Bolsas kraft<br/>
-                    <input type="text" class="type-product" name="type-product" placeholder="medida" required>
+                    <select class="type-product" name="type-product" required>
+                      <option value="" ></option>
+                      <option value="14cmx20cm">14cmx20cm</option>
+                      <option value="22cmx30cm">22cmx30cm</option>
+                      <option value="30cmx41cm">30cmx41cm</option>
+                      <option value="14cmx40cmVino">14cmx40cm(vino)</option>
+                      <option value="surtido">surtido</option>
+
+                    </select>
                     <input type="number" class="number-product" name="number-product" placeholder="cantidad" step="5" min="5" required>
                     <button class="want-btn">Agregar al pedido</button>
                   </p>
@@ -414,7 +431,14 @@
                     14cmx20cm $480 | 22cmx30cm $654 | 30cmx41cm $909
                   </p>
                   <p class="product-input">Bolsas fantasía<br/>
-                    <input type="text" class="type-product" name="type-product" placeholder="medida y color" required>
+                    <select class="type-product" name="type-product" required>
+                      <option value="" ></option>
+                      <option value="14cmx20cm">14cmx20cm</option>
+                      <option value="22cmx30cm">22cmx30cm</option>
+                      <option value="30cmx41cm">30cmx41cm</option>
+                      <option value="surtido">surtido</option>
+
+                    </select>
                     <input type="number" class="number-product" name="number-product" placeholder="cantidad" step="5" min="5" required>
                     <button class="want-btn">Agregar al pedido</button>
                   </p>

@@ -24,29 +24,29 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  //ELEMENTO DEL MENU DESTACADO CUANDO LA SECCION ESTÁ ACTIVA
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const id = entry.target.getAttribute("id");
-        const menuItem = document.querySelector(`a[href="#${id}"]`);
+  // ELEMENTO DEL MENU DESTACADO CUANDO LA SECCION ESTÁ ACTIVA
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      const id = entry.target.getAttribute("id");
+      const menuItem = document.querySelector(`a[href="#${id}"]`);
 
-        if (entry.isIntersecting && menuItem) {
-          menuItems.forEach((item) => {
-            item.classList.remove("active");
-            item.classList.remove("hover"); 
-          });
-          menuItem.classList.add("active");
-        }
-      });
-    },
-    {
-      threshold: 0.5,
-    }
-  );
-  sections.forEach((section) => {
-    observer.observe(section);
-  });
+      if (entry.isIntersecting && menuItem) {
+        menuItems.forEach((item) => {
+          item.classList.remove("observer-active");
+        });
+        menuItem.classList.add("observer-active");
+      }
+    });
+  },
+  {
+    threshold: 0.5,
+  }
+);
+
+sections.forEach((section) => {
+  observer.observe(section);
+});
 
   //LISTA DE "MI PEDIDO"
   storedProducts.forEach((productText) => {

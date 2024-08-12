@@ -77,7 +77,7 @@ a {
   font-size: 16px;
   color: var(--first-color);
 }
-.item-menu.active {
+.item-menu.observer-active {
   text-shadow: 1px 1px 5px var(--second-color);
   background-color: var(--fourth-color);
   font-size: 16px;

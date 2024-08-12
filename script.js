@@ -24,29 +24,31 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // ELEMENTO DEL MENU DESTACADO CUANDO LA SECCION ESTÁ ACTIVA
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      const id = entry.target.getAttribute("id");
-      const menuItem = document.querySelector(`a[href="#${id}"]`);
+//ELEMENTO DE MENU DESTACADO SEGUN SECCION EN PANTALLA
 
-      if (entry.isIntersecting && menuItem) {
-        menuItems.forEach((item) => {
-          item.classList.remove("observer-active");
-        });
-        menuItem.classList.add("observer-active");
-      }
-    });
-  },
-  {
-    threshold: 0.5,
-  }
-);
+window.addEventListener("scroll", () => {
+  let currentSection = "";
 
-sections.forEach((section) => {
-  observer.observe(section);
+  // Recorre todas las secciones
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+
+    // Verifica si la sección está visible en la ventana
+    if (pageYOffset >= sectionTop - sectionHeight / 3) {
+      currentSection = section.getAttribute("id");
+    }
+  });
+
+  // Recorre todos los elementos del menú y aplica el estilo activo
+  menuItems.forEach((item) => {
+    item.classList.remove("observer-active");
+    if (item.getAttribute("href").substring(1) === currentSection) {
+      item.classList.add("observer-active");
+    }
+  });
 });
+
 
   //LISTA DE "MI PEDIDO"
   storedProducts.forEach((productText) => {

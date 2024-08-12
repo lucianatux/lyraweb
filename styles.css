@@ -412,6 +412,27 @@ height: 100px !important;
   text-align: center;
   margin-bottom: 30px;
 }
+.catalogo{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+}
+.catalogo div{
+  padding: 10px;
+  margin: 10px;
+  background: var(--first-color);
+  border-radius: 10px;
+}
+.catalogo div:hover{
+  box-shadow: 0px 0px 10px var(--second-color);
+  cursor: pointer;
+}
+.catalogo img{
+  width: 300px !important;
+  padding: 10px;
+}
 .carta-img-div {
   display: flex;
   justify-content: center;
@@ -574,6 +595,10 @@ footer p {
   .mirror2 {
     display: none;
   }
+  .catalogo img{
+    width: 250px !important;
+    padding: 5px;
+  }
   .img-and-text img {
     max-width: 280px;
     padding: 10px 0;
@@ -644,6 +669,9 @@ footer p {
     margin: 5px;
   }
   #titulo-formulario {
+    flex-direction: column;
+  }
+  .catalogo{
     flex-direction: column;
   }
 }

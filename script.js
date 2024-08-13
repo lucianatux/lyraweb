@@ -7,48 +7,116 @@ document.addEventListener("DOMContentLoaded", function () {
   const menuItems = document.querySelectorAll(".item-menu");
   const sections = document.querySelectorAll("section");
 
-  // ACCESO DIRECTO SIN SCROLL A LAS SECCIONES DEL MENU
-  document.querySelectorAll("#menu a").forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault(); // Prevent the default anchor click behavior
+  // ACCESO DIRECTO SIN SCROLL A LAS SECCIONES
+  function handleAnchorClick(e) {
+    e.preventDefault(); // Prevent the default anchor click behavior
 
-      const targetId = this.getAttribute("href").substring(1); // Get the target section id
-      const targetSection = document.getElementById(targetId); // Get the target section element
+    const targetId = this.getAttribute("href").substring(1); // Get the target section id
+    const targetSection = document.getElementById(targetId); // Get the target section element
 
-      if (targetSection) {
-        targetSection.scrollIntoView({ behavior: "instant" }); // Instantly scroll to the target section
-      } else {
-        // Si targetSection es null, permitimos que el enlace se comporte normalmente
-        window.location.href = this.getAttribute("href");
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: "instant" }); // Instantly scroll to the target section
+    } else {
+      // Si targetSection es null, permitimos que el enlace se comporte normalmente
+      window.location.href = this.getAttribute("href");
+    }
+  }
+  document.querySelectorAll("#menu a, #icons-div a").forEach((anchor) => {
+    anchor.addEventListener("click", handleAnchorClick);
+  });
+
+  //ELEMENTO DE MENU DESTACADO SEGUN SECCION EN PANTALLA
+
+  window.addEventListener("scroll", () => {
+    let currentSection = "";
+
+    // Recorre todas las secciones
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+
+      // Verifica si la sección está visible en la ventana
+      if (pageYOffset >= sectionTop - sectionHeight / 3) {
+        currentSection = section.getAttribute("id");
+      }
+    });
+
+    // Recorre todos los elementos del menú y aplica el estilo activo
+    menuItems.forEach((item) => {
+      item.classList.remove("observer-active");
+      if (item.getAttribute("href").substring(1) === currentSection) {
+        item.classList.add("observer-active");
       }
     });
   });
 
-//ELEMENTO DE MENU DESTACADO SEGUN SECCION EN PANTALLA
+  //PRESENTACIÓN
+  const items = document.querySelectorAll(".icons-div > div");
+  const textDisplay = document.getElementById("text-display");
 
-window.addEventListener("scroll", () => {
-  let currentSection = "";
+  const texts = [
+    "Promociones",
+    "Librería y Juguetería",
+    "Accesorios para el pelo",
+    "Tinturas y tratamientos",
+    "Carteras y afines",
+    "Productos Sublimados",
+  ];
+  let currentIndex = 0;
+  let rotationInterval;
 
-  // Recorre todas las secciones
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
+  function updateActiveItem() {
+    // Remove active class from all items
+    items.forEach((item) => item.classList.remove("special"));
 
-    // Verifica si la sección está visible en la ventana
-    if (pageYOffset >= sectionTop - sectionHeight / 3) {
-      currentSection = section.getAttribute("id");
+    // Add active class to the current item
+    items[currentIndex].classList.add("special");
+
+    // Update the displayed text
+    textDisplay.textContent = texts[currentIndex];
+
+    // Move to the next item in the array
+    currentIndex = (currentIndex + 1) % items.length;
+  }
+
+  function startRotation() {
+    rotationInterval = setInterval(updateActiveItem, 3000);
+  }
+
+  function stopRotation() {
+    clearInterval(rotationInterval);
+  }
+
+  function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+
+  // Initialize the first active item
+  updateActiveItem();
+
+  // Event listener for scroll
+  window.addEventListener("scroll", () => {
+    const iconsDiv = document.querySelector(".icons-div");
+
+    if (isInViewport(iconsDiv)) {
+      if (!rotationInterval) {
+        startRotation();
+      }
+    } else {
+      stopRotation();
+      rotationInterval = null;
     }
   });
 
-  // Recorre todos los elementos del menú y aplica el estilo activo
-  menuItems.forEach((item) => {
-    item.classList.remove("observer-active");
-    if (item.getAttribute("href").substring(1) === currentSection) {
-      item.classList.add("observer-active");
-    }
-  });
-});
-
+  // Start the rotation initially
+  startRotation();
 
   //LISTA DE "MI PEDIDO"
   storedProducts.forEach((productText) => {
@@ -124,7 +192,7 @@ window.addEventListener("scroll", () => {
       // Limpiar mensaje
       message.textContent = "";
 
-      const parentElement = this.parentElement; 
+      const parentElement = this.parentElement;
 
       // Verificar si el contenedor tiene inputs
       const detailProduct = parentElement.querySelector(".type-product");
@@ -140,7 +208,7 @@ window.addEventListener("scroll", () => {
 
       let productText = "";
       const selectElement = parentElement.querySelector("select");
-  
+
       if (selectElement) {
         // Si hay un select, obtener solo el texto fuera de select e inputs
         productText = Array.from(parentElement.childNodes)
@@ -162,7 +230,6 @@ window.addEventListener("scroll", () => {
           .replace("Agregar al pedido", "")
           .trim();
       }
-  
 
       let detail = "";
 
@@ -300,6 +367,7 @@ window.addEventListener("scroll", () => {
   });
 
   // SEARCH JS
+  /*
   const searchInput = document.getElementById("search-input");
   const searchButton = document.getElementById("search-button");
   const contentItems = document.querySelectorAll(".content-item");
@@ -319,7 +387,7 @@ window.addEventListener("scroll", () => {
     if (event.key === "Enter") {
       searchButton.click();
     }
-  });
+  });*/
 
   //CARRUSEL CARTERAS Y AFINES CON SELECT
   const select = document.getElementById("carteras-select");
@@ -339,11 +407,16 @@ window.addEventListener("scroll", () => {
     galbandoleras.style.display = "none";
     galmochilas.style.display = "none";
     galaccesorios.style.display = "none";
-
+  
     // Mostrar la galería seleccionada
     let selectedGallery = document.getElementById(this.value);
     if (selectedGallery) {
       selectedGallery.style.display = "block";
     }
   });
+  
+
+
+
 });
+

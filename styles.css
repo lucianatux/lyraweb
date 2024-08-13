@@ -11,6 +11,7 @@
   --fifth-color: #3d444c;
   --sixth-color: #e66f9b;
   --seventh-color: #56606b8f;
+  --eighth-color: #c83169;
 
 }
 
@@ -144,7 +145,36 @@ a {
 .slogan {
   font-size: 25px;
   font-weight: 600;
-  padding: 50px;
+  padding: 40px;
+}
+.icons-div {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+.icons-div > div {
+  width: 70px;
+  position: relative;
+  text-align: center;
+}
+.icons-div img{
+  width: 50px !important;
+  margin: 0 5px !important;
+  filter: grayscale(100%);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.special img {
+  transform: scale(1.3);
+  filter: grayscale(0%);
+
+}
+#text-display {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--eighth-color);
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 .div-collage {
   display: flex;
@@ -412,6 +442,9 @@ height: 100px !important;
   text-align: center;
   margin-bottom: 30px;
 }
+a h5{
+  color: var(--second-color);
+}
 .catalogo{
   display: flex;
   flex-direction: row;
@@ -573,6 +606,9 @@ footer p {
   }
   #mayorista {
     display: none;
+  }
+  .icons-div {
+    grid-template-columns: repeat(3, 1fr);
   }
   #order {
     font-size: 10px;
